@@ -195,7 +195,7 @@ Operações:
 
 ---
 
-## 8. 🚀 Fora do Escopo (para manter simples)
+## 8. 🚀 Fora do Escopo
 
 * Sistema real de autenticação (JWT, etc.)
 * Upload de imagens
