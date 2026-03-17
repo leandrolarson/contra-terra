@@ -1,10 +1,10 @@
-# roubank-css
+# contra-terra
 
-### **Autor:** Roni Fabio Banaszewski
+### **Autor:** Leandro Larson
 
-Este projeto tem como objetivo implementar progressivamente e de forma didática uma aplicação web inspirada em operações comuns de instituições financeiras (ex: saque, depósito, extrato, saldo, cadastro), sendo o diferencial, a cobrança de taxas de forma abusiva para cada operação realizada pelo cliente.
+O objetivo do projeto é desenvolver uma aplicação web de noticias relacionadas a cultura pop, com comunidade de usuários, um espaço de compartilhamento de opiniões sobre filmes, séries e etc.
 
-O frontend da aplicação foi desenvolvido com HTML, CSS e JavaScript e o backend foi simulado pela implementação de uma API Fake, usando o JSON Server.
+O frontend da aplicação será desenvolvido com HTML, CSS e JavaScript e o backend foi simulado pela implementação de uma API Fake, usando o JSON Server.
 
 ## 📚 Documentação do Projeto
 
@@ -16,15 +16,15 @@ Para entender as regras de negócio, o escopo e a arquitetura técnica da aplica
 ## 🎨 Design
 
 - [🎨 Design System](./docs/design-system.md) - Identidade visual
-- [🖼️ Protótipo no Figma](https://www.figma.com/file/a1VDbO1aNfZyulQPxT99OE/beleza-em-dia?node-id=3%3A80) - Telas interativas da aplicação.
+- [🖼️ Protótipo no Figma](https://www.figma.com/design/nfWeCOYJLFd7QSaWacvOwM/ContraTerra?node-id=0-1&t=9pipKaDGfObekCBs-1) - Telas interativas da aplicação.
 
 ## 🌐 Site em Produção - GitHub Pages
 
-https://utfpr-gp.github.io/roubank-css/
+https://github.com/leandrolarson/contra-terra.git
 
 ## 💻 Tecnologias e Dependências
 
-- **Framework CSS:** MaterializeCSS
+- **Framework CSS:** "A Definir"
 - **JavaScript:**
   - **JQuery** - Para realizar animações e manipulação do DOM.
   - **JSON Server** - Para simular uma API REST.
@@ -90,6 +90,4 @@ https://utfpr-gp.github.io/roubank-css/
 
 ## 📱 Telas da aplicação
 
-![image](https://github.com/user-attachments/assets/05283ef1-8986-437c-a9a9-55bd99c36727)
-![image](https://github.com/user-attachments/assets/b38a3b57-c182-4a65-84f1-7a2707ec44ea)
-![image](https://github.com/user-attachments/assets/d62133be-d584-4d7d-8f9b-fcbfff5360c3)
+
