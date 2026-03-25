@@ -16,7 +16,7 @@ Para entender as regras de negócio, o escopo e a arquitetura técnica da aplica
 ## 🎨 Design
 
 - [🎨 Design System](./docs/design-system.md) - Identidade visual
-- [🖼️ Protótipo no Figma](https://www.figma.com/design/nfWeCOYJLFd7QSaWacvOwM/ContraTerra?node-id=0-1&t=9pipKaDGfObekCBs-1) - Telas interativas da aplicação.
+- [🖼️ Protótipo no Stitch](https://stitch.withgoogle.com/projects/11685615601049859416) - Telas interativas da aplicação.
 
 ## 🌐 Site em Produção - GitHub Pages
 
