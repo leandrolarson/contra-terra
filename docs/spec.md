@@ -54,10 +54,10 @@ AVALIACAO {
 
 Responsável por armazenar dados de autenticação.
 
-* `id`: Identificador único gerado pelo JSON Server
-* `nome`: Nome do usuário
-* `email`: Usado para login
-* `senha`: Senha do usuário
+- `id`: Identificador único gerado pelo JSON Server
+- `nome`: Nome do usuário
+- `email`: Usado para login
+- `senha`: Senha do usuário
 
 ---
 
@@ -65,13 +65,13 @@ Responsável por armazenar dados de autenticação.
 
 Armazena os conteúdos exibidos na plataforma.
 
-* `id`: Identificador único
-* `titulo`: Título da notícia
-* `imagem`: URL da imagem
-* `resumo`: Pequena descrição
-* `conteudo`: Texto completo
-* `data`: Data da publicação (formato ISO)
-* `categoria`: Tipo (filme, série, game, etc.)
+- `id`: Identificador único
+- `titulo`: Título da notícia
+- `imagem`: URL da imagem
+- `resumo`: Pequena descrição
+- `conteudo`: Texto completo
+- `data`: Data da publicação (formato ISO)
+- `categoria`: Tipo (filme, série, game, etc.)
 
 ---
 
@@ -79,11 +79,11 @@ Armazena os conteúdos exibidos na plataforma.
 
 Registra comentários feitos pelos usuários.
 
-* `id`: Identificador único
-* `usuarioId`: Referência ao usuário
-* `noticiaId`: Referência à notícia
-* `texto`: Conteúdo do comentário
-* `data`: Data do comentário
+- `id`: Identificador único
+- `usuarioId`: Referência ao usuário
+- `noticiaId`: Referência à notícia
+- `texto`: Conteúdo do comentário
+- `data`: Data do comentário
 
 ---
 
@@ -91,34 +91,30 @@ Registra comentários feitos pelos usuários.
 
 Armazena notas atribuídas pelos usuários.
 
-* `id`: Identificador único
-* `usuarioId`: Referência ao usuário
-* `noticiaId`: Referência à notícia
-* `nota`: Valor de 0 a 5
+- `id`: Identificador único
+- `usuarioId`: Referência ao usuário
+- `noticiaId`: Referência à notícia
+- `nota`: Valor de 0 a 5
 
 ---
 
 ## 3. 🔗 Regras de Relacionamento
 
-* Um **usuário** pode:
+- Um **usuário** pode:
+  - fazer vários comentários
+  - realizar várias avaliações
 
-  * fazer vários comentários
-  * realizar várias avaliações
+- Uma **notícia** pode:
+  - ter vários comentários
+  - ter várias avaliações
 
-* Uma **notícia** pode:
+- Cada **comentário** pertence a:
+  - 1 usuário
+  - 1 notícia
 
-  * ter vários comentários
-  * ter várias avaliações
-
-* Cada **comentário** pertence a:
-
-  * 1 usuário
-  * 1 notícia
-
-* Cada **avaliação** pertence a:
-
-  * 1 usuário
-  * 1 notícia
+- Cada **avaliação** pertence a:
+  - 1 usuário
+  - 1 notícia
 
 ---
 
@@ -126,21 +122,21 @@ Armazena notas atribuídas pelos usuários.
 
 Principais endpoints:
 
-* `GET /users` → lista usuários
+- `GET /users` → lista usuários
 
-* `POST /users` → cria usuário
+- `POST /users` → cria usuário
 
-* `GET /news` → lista notícias
+- `GET /news` → lista notícias
 
-* `GET /news?id=1` → detalhe de notícia
+- `GET /news?id=1` → detalhe de notícia
 
-* `GET /comments?noticiaId=1` → comentários de uma notícia
+- `GET /comments?noticiaId=1` → comentários de uma notícia
 
-* `POST /comments` → criar comentário
+- `POST /comments` → criar comentário
 
-* `GET /reviews?noticiaId=1` → avaliações
+- `GET /reviews?noticiaId=1` → avaliações
 
-* `POST /reviews` → criar avaliação
+- `POST /reviews` → criar avaliação
 
 ---
 
@@ -193,15 +189,27 @@ Exemplo simplificado:
 
 ## 6. ⚙️ Regras Técnicas Importantes
 
-* IDs são gerados automaticamente pelo JSON Server
+- IDs são gerados automaticamente pelo JSON Server
 
-* Relacionamentos são feitos via:
+- Relacionamentos são feitos via:
+  - `usuarioId`
+  - `noticiaId`
 
-  * `usuarioId`
-  * `noticiaId`
+- Validações (frontend):
+  - nota entre 0 e 5
+  - campos obrigatórios
+  - usuário precisa estar logado para comentar/avaliar
 
-* Validações (frontend):
+## 7. 🧰 Tecnologias Utilizadas
 
-  * nota entre 0 e 5
-  * campos obrigatórios
-  * usuário precisa estar logado para comentar/avaliar
+### Frontend
+
+- Bootstrap v5.3.8
+
+### Backend (Fake API)
+
+- JSON Server
+
+### APIs Externas
+
+- OMDb API (Open Movie Database API)

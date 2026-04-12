@@ -24,7 +24,9 @@ https://github.com/leandrolarson/contra-terra.git
 
 ## 💻 Tecnologias e Dependências
 
-- **Framework CSS:** "A Definir"
+- **Framework CSS:** "Bootstrap 5.3 - O Bootstrap como framework por sua **responsividade nativa**, que facilita a criação de layouts adaptáveis a diferentes dispositivos, e pela grande variedade de **componentes prontos**, como botões, formulários e menus, que agilizam o desenvolvimento e garantem consistência visual. Além disso, oferece boa **customização**, permitindo ajustar estilos e temas conforme a necessidade, tornando o processo de desenvolvimento mais rápido e eficiente.
+  "
+- **API:** "OMDb API (Open Movie Database API) - A OMDb API (Open Movie Database API) por sua facilidade de uso e integração simples, permitindo obter rapidamente informações de filmes, séries e episódios a partir de requisições HTTP. Além disso, ela fornece dados relevantes como avaliações do IMDb, elenco e sinopse, o que a torna ideal para aplicações que necessitam de informações completas e confiáveis. Outro ponto importante é sua leveza e praticidade, sendo uma solução eficiente para projetos que buscam rapidez no desenvolvimento sem grande complexidade de implementação."
 - **JavaScript:**
   - **JQuery** - Para realizar animações e manipulação do DOM.
   - **JSON Server** - Para simular uma API REST.
@@ -33,7 +35,7 @@ https://github.com/leandrolarson/contra-terra.git
 
 #### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
 
-- [ ] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
+- [x] ID 01 - Prototipa interfaces adaptáveis para no mínimo os tamanhos de tela mobile e desktop, usando ferramentas de design tradicionais (Figma, Quant UX ou Sketch) ou IA (Stitch).
 - [ ] ID 02 - Implementa layout responsivo com Framework CSS (Bootstrap, Materialize, Tailwind + DaisyUI) usando Flexbox ou Grid do próprio framework.
 - [ ] ID 03 - Implementa layout responsivo com CSS puro, usando Flexbox ou Grid Layout.
 - [ ] ID 04 - Utiliza componentes prontos de um Framework CSS (ex.: card, button) e componentes JavaScript do framework (ex.: modal, carousel).
@@ -89,5 +91,3 @@ https://github.com/leandrolarson/contra-terra.git
 - Executar o projeto frontend.
 
 ## 📱 Telas da aplicação
-
-
