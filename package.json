@@ -1,0 +1,30 @@
+{
+  "name": "contra-terra",
+  "version": "1.0.0",
+  "description": "O objetivo do projeto é desenvolver uma aplicação web de noticias relacionadas a cultura pop, com comunidade de usuários, um espaço de compartilhamento de opiniões sobre filmes, séries e etc.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandrolarson/contra-terra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandrolarson/contra-terra/issues"
+  },
+  "homepage": "https://github.com/leandrolarson/contra-terra#readme",
+  "dependencies": {
+    "jquery": "^4.0.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}

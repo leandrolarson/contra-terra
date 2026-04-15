@@ -31,6 +31,13 @@ https://github.com/leandrolarson/contra-terra.git
   - **JQuery** - Para realizar animações e manipulação do DOM.
   - **JSON Server** - Para simular uma API REST.
 
+## 📑 Configuração do Ambiente e Inicialização do Projeto
+
+- [x] Criação do package.json com NPM;
+- [x] Criação do .gitignore;
+- [x] Instalação das dependências com NPM (jQuery, uuid e gh-pages);
+- [x] Enviar para o git (push);
+
 ## ✅ Checklist | Indicadores de Desempenho (ID) dos Resultados de Aprendizagem (RA)
 
 #### RA1 - Utilizar Frameworks CSS para estilização de elementos HTML e criação de layouts responsivos.
