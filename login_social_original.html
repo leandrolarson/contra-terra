@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-dim": "#005c37",
+                      "on-tertiary-container": "#670025",
+                      "on-tertiary-fixed": "#390011",
+                      "on-error": "#ffefec",
+                      "inverse-surface": "#0c0f0f",
+                      "surface-container-highest": "#dbdddd",
+                      "surface-container-high": "#e1e3e3",
+                      "on-surface-variant": "#5a5c5c",
+                      "tertiary-dim": "#a1003e",
+                      "surface": "#f6f6f6",
+                      "on-primary-container": "#5a4900",
+                      "inverse-on-surface": "#9c9d9d",
+                      "on-background": "#2d2f2f",
+                      "primary-dim": "#5f4e00",
+                      "surface-container": "#e7e8e8",
+                      "error": "#b02500",
+                      "secondary": "#006940",
+                      "surface-tint": "#6d5a00",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#00613b",
+                      "on-primary-fixed": "#443700",
+                      "on-secondary-fixed": "#004126",
+                      "on-tertiary-fixed-variant": "#77002c",
+                      "surface-container-low": "#f0f1f1",
+                      "tertiary": "#b70048",
+                      "on-error-container": "#520c00",
+                      "error-dim": "#b92902",
+                      "primary": "#6d5a00",
+                      "on-secondary": "#caffdb",
+                      "inverse-primary": "#fed400",
+                      "outline-variant": "#acadad",
+                      "surface-variant": "#dbdddd",
+                      "on-primary": "#fff2cf",
+                      "surface-dim": "#d3d5d5",
+                      "on-tertiary": "#ffeff0",
+                      "primary-fixed": "#fed400",
+                      "secondary-fixed-dim": "#46e397",
+                      "primary-container": "#fed400",
+                      "secondary-container": "#58f2a4",
+                      "on-surface": "#2d2f2f",
+                      "primary-fixed-dim": "#eec600",
+                      "tertiary-fixed-dim": "#ff7793",
+                      "outline": "#767777",
+                      "on-secondary-container": "#005734",
+                      "tertiary-fixed": "#ff8fa3",
+                      "tertiary-container": "#ff8fa3",
+                      "secondary-fixed": "#58f2a4",
+                      "on-primary-fixed-variant": "#655300",
+                      "background": "#f6f6f6",
+                      "surface-bright": "#f6f6f6",
+                      "error-container": "#f95630"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "1.5rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "display": ["Space Grotesk"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-space-grotesk { font-family: 'Space Grotesk', sans-serif; }
+        .slash-decorator {
+            clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+        }
+        .ambient-shadow {
+            box-shadow: 0 40px 60px -15px rgba(45, 47, 47, 0.08);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col overflow-x-hidden">
+<!-- Navigation (Back Button Only - Focused Flow) -->
+<nav class="fixed top-0 left-0 w-full px-8 py-6 z-50 flex justify-between items-center">
+<a class="group flex items-center gap-2 text-secondary font-bold text-sm uppercase tracking-widest transition-all hover:text-tertiary" href="#">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+            Voltar para o site
+        </a>
+<div class="text-2xl font-black italic tracking-tighter text-primary uppercase">
+            ContraTerra
+        </div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-4 relative">
+<!-- Asymmetric Background Elements -->
+<div class="absolute top-20 -right-20 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-secondary-container/10 rounded-full blur-3xl -z-10"></div>
+<div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+<!-- Left Side: Editorial Branding -->
+<div class="md:col-span-7 flex flex-col items-start gap-6 relative">
+<div class="slash-decorator w-24 h-4 bg-tertiary mb-2"></div>
+<h1 class="font-space-grotesk text-6xl md:text-8xl font-bold tracking-tighter leading-none text-on-background">
+                    Entrar no <br/>
+<span class="text-primary-dim italic">Multiverso</span>
+</h1>
+<p class="text-on-surface-variant text-xl max-w-md leading-relaxed font-medium">
+                    Acesse a plataforma definitiva para explorar territórios digitais e conectar-se com a elite da cultura geek.
+                </p>
+<div class="mt-8 flex gap-4 items-center">
+<div class="flex -space-x-4">
+<div class="w-12 h-12 rounded-full border-4 border-surface bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a young man with a modern hairstyle and soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFWU7h4QJl_rq-2J-TEUwbubFhGwIctXUvBqY8hgVesvszDBcwtg9oKSrj7Tx5m7lyHz_RUzQlyIj_wzG2PwyKTkfT9AfXUmt0EORkc4X_w4rm_K3_dGjR-pwAwY44mijJeGuuhC7ZYev1DkZ__8vhYbJhI7YX4ZadYNeT6XMKlQLQDrwGfLIP4HWDjCGrvgHvC8lQOM52LahoUvtsFPah0vZYr02LQGievismoan9uef_v5jkcS4TWbrTupQMzcRnI4xAE6rUse-G"/>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-surface bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a woman smiling in an urban environment with soft afternoon light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANKF5D-5xPfUseHlGe47TybFjaoLVFeD9gDKnJ8GPcihp12RybZHeZ8Boxnrlj2LvJa2tUwprZyckbDDNd71bod84MW5gTRj4_ySk-O0ts7N3edbUYFHS-T2JysfSzc7m3p4wjvDDXCUwAuySJCHHC40dey2vnegMTSbYOnuq7N5edqGOgRXJLJcUwoiqSkIsz4pLizeW97iw6R-8i_eTgHUyLn7CSHtWC2DvSCdmGLazEFK1WKCsqk3o3ZFEsanpUCrieMfLnqu0G"/>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-surface bg-surface-container-high overflow-hidden flex items-center justify-center bg-secondary-container">
+<span class="text-on-secondary-container text-xs font-bold">+2k</span>
+</div>
+</div>
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Junte-se à comunidade</span>
+</div>
+</div>
+<!-- Right Side: Login Card -->
+<div class="md:col-span-5 flex justify-center">
+<div class="glass-panel w-full max-w-md p-10 rounded-xl ambient-shadow border border-white/40 flex flex-col gap-8 relative overflow-hidden">
+<!-- Subtle texture overlay -->
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+<div class="space-y-2">
+<h2 class="font-space-grotesk text-3xl font-bold tracking-tight">Login</h2>
+<p class="text-on-surface-variant text-sm">Escolha seu portal de entrada favorito.</p>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Google Login Button -->
+<button class="group relative flex items-center justify-center gap-4 bg-surface-container-lowest border border-surface-container-highest py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:border-primary">
+<div class="w-10 h-10 flex items-center justify-center overflow-hidden">
+<img class="w-6 h-6 object-contain" data-alt="Official Google logo icon with its signature four colors on a clean white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ82d5SSUYfaPzCJ0JddDqytjvfASL6Eqd0vRb-auzvZ__3LI9ZNPqBgoHLoTFdiAJMtn7mOORHyzuwOY0ldFhfH_-PPv2YhP-brn445X9-vTb22HiE4cQg7QR6OSOJoZYchiG4kuSFOyKgFc85_nEtQcS7zZ7vA7NXJKXTsuYHqjOvryppBv9H6CSIM9w9zIvkkyZbQkPx_THsJiYBjbanKbvFurqv5HwSjlqjcco5TGxBUr1WqZEwWfN6T9w1FhRZT9pypKQNWGh"/>
+</div>
+<span class="font-bold text-on-surface tracking-tight">Continuar com Google</span>
+</button>
+<!-- Discord Login Button -->
+<button class="group relative flex items-center justify-center gap-4 bg-[#5865F2] py-5 rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-95 hover:bg-tertiary overflow-hidden">
+<!-- Visual Reference Image Overlay -->
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 transition-opacity group-hover:opacity-40" data-alt="Atmospheric digital illustration showing a Discord-inspired glowing interface with vibrant purple and neon accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlP10Y_DIJpY_9VliRfZbS6EPk7-7oV8vw_p80cYX0T7QB6xdQ7CnmQuCZrFGg_z9nu7_y4iUaqGsDmwurMcSWWaafAgkLDEIxFVHdaAqaZrq5VAi9p5Ix_juV4yvmefT71BW9PUEJrLvm61hoZ4uDHh-rruayY-Vtr7oxDGijUhz5EGsPlbxGUfnBuulu-fU1ATGsMiYQyBp-wfsPIR-mDMY6NV2ghHq21sBhYS-VuwekHKKS1wA7nhnBwWcPXgqG495D7q1Jcptc"/>
+<div class="relative flex items-center gap-4">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="font-bold text-white tracking-tight">Continuar com Discord</span>
+</div>
+</button>
+</div>
+<div class="relative py-4">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-container-highest"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase tracking-widest font-bold">
+<span class="bg-white/0 px-4 text-on-surface-variant">Pronto para a jornada?</span>
+</div>
+</div>
+<p class="text-[10px] text-center text-on-surface-variant uppercase tracking-tighter leading-relaxed">
+                        Ao entrar, você concorda com nossos <br/>
+<a class="text-primary font-bold hover:underline" href="#">Termos de Serviço</a> e <a class="text-primary font-bold hover:underline" href="#">Privacidade</a>.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating News Ticker (Signature Component) -->
+<div class="fixed bottom-0 w-full glass-panel py-3 px-6 z-40 border-t border-white/20">
+<div class="flex items-center gap-8 overflow-hidden whitespace-nowrap">
+<span class="flex items-center gap-2 text-tertiary font-black uppercase text-[10px] tracking-[0.2em]">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+                Transmissão Direta
+            </span>
+<div class="flex gap-12 animate-marquee">
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Novas missões disponíveis no setor 7</span>
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Atualização do kernel ContraTerra: v2.4.1</span>
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Torneio Multiverso começa em 48 horas</span>
+<span class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">Novas skins lendárias na loja de fragmentos</span>
+</div>
+</div>
+</div>
+<style>
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+</body></html>

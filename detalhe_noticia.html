@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhe da Notícia | ContraTerra</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .hero-article {
+            height: 70vh;
+            min-height: 500px;
+            position: relative;
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCArGqjytvOKkI9qJS1EEn1oE4SuADFmTeP5AxclVyAWwF33cBhSpr2n18jqR_F3b5Gz2Wpl_2UzOHps5Bl3-Vkglv3medLljW6OpE88HJmvKxMLLRWLcIw-5Bdn05XKNvRENsGpO7VYEKh1vgQD7kyEuLAEqlNpxb9zIvLWfoxkvgrHjP1hlS-lOX2YXduloFcKlld0oev-MQ4YkU74-81Fy_cQMCgN7xl93-g2CBsT596LMcDfwGhCnJASRcULaPfBxH6hAcS8szK');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-gradient {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, var(--ct-on-surface) 0%, rgba(45,47,47,0.4) 60%, transparent 100%);
+        }
+        .category-nav a {
+            color: var(--ct-primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+        .category-nav a:hover {
+            color: #fff;
+        }
+        .first-letter-drop::first-letter {
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: var(--ct-primary);
+            float: left;
+            margin-right: 1rem;
+            line-height: 1;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .article-quote {
+            background-color: var(--ct-surface-low);
+            border-left: 8px solid var(--ct-primary);
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            margin: 3rem 0;
+        }
+        .article-quote::before {
+            content: "format_quote";
+            font-family: 'Material Symbols Outlined';
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            font-size: 8rem;
+            color: var(--ct-primary);
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 60px -15px rgba(0,0,0,0.06);
+        }
+        .comment-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+        }
+        .tag-pill {
+            background-color: var(--ct-surface);
+            border: 1px solid var(--ct-surface-low);
+            color: var(--ct-on-surface);
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50rem;
+            transition: all 0.3s;
+        }
+        .tag-pill:hover {
+            background-color: var(--ct-tertiary);
+            color: #fff;
+            border-color: var(--ct-tertiary);
+        }
+        .related-card {
+            display: flex;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .related-card-img-wrapper {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .related-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .related-card:hover .related-card-img {
+            transform: scale(1.1);
+        }
+        .related-card:hover .related-title {
+            color: var(--ct-tertiary);
+        }
+        .cta-sidebar {
+            background-color: var(--ct-on-surface);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .cta-sidebar-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            transition: opacity 0.3s;
+        }
+        .cta-sidebar:hover .cta-sidebar-bg {
+            opacity: 0.3;
+        }
+        .btn-scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background-color: var(--ct-primary);
+            color: var(--ct-on-primary-container);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 1040;
+            transition: transform 0.3s;
+        }
+        .btn-scroll-top:hover {
+            transform: scale(1.1);
+            color: var(--ct-on-primary-container);
+        }
+    </style>
+</head>
+<body class="bg-surface">
+
+<!-- TopNavBar -->
+<nav class="navbar navbar-expand-lg fixed-top ct-glass shadow-sm py-3">
+    <div class="container-fluid max-w-7xl px-4 px-lg-5">
+        <a class="navbar-brand text-uppercase fw-bolder fst-italic" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;" href="index.html">
+            ContraTerra
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto gap-3 fw-bold text-uppercase" style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">
+                <li class="nav-item">
+                    <a class="nav-link text-primary-brand border-bottom border-warning border-2" href="#">Notícias</a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-secondary" style="transition: color 0.3s;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color='var(--ct-secondary)'" href="#">Filmes</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" style="transition: color 0.3s;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color='var(--ct-secondary)'" href="#">Séries</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" style="transition: color 0.3s;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color='var(--ct-secondary)'" href="#">Jogos</a></li>
+                <li class="nav-item"><a class="nav-link text-secondary" style="transition: color 0.3s;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color='var(--ct-secondary)'" href="#">Tec</a></li>
+            </ul>
+            
+            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+                <button class="btn btn-link text-dark p-0 border-0">
+                    <span class="material-symbols-outlined fs-5">search</span>
+                </button>
+                <a href="login_cadastro.html" class="btn btn-primary px-4 rounded-pill fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em;">Entrar</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main class="pt-5 mt-4 pb-5">
+    
+    <!-- Hero Section -->
+    <section class="hero-article">
+        <div class="hero-gradient"></div>
+        <div class="container h-100 d-flex flex-column justify-content-end position-relative z-1 pb-5">
+            <div class="d-flex align-items-center gap-2 mb-4 category-nav">
+                <a href="#">Notícias</a>
+                <span class="material-symbols-outlined text-white" style="font-size: 14px;">chevron_right</span>
+                <a href="#">Tec</a>
+                <span class="material-symbols-outlined text-white" style="font-size: 14px;">chevron_right</span>
+                <span class="text-white-50 text-uppercase fw-bold" style="font-size: 0.875rem; letter-spacing: 0.1em;">Aprimoramentos Cibernéticos</span>
+            </div>
+            
+            <h1 class="display-3 fw-black text-white text-uppercase lh-sm mb-4" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em; max-width: 900px;">
+                A FRONTEIRA NEON: <br>REESCREVENDO A BIOLOGIA HUMANA
+            </h1>
+            
+            <div class="d-flex align-items-center gap-4 mt-3">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWCoqwn7WecKk1IW235CknUepMlTai8qCjMBudOOfTVMrWM0h8sdYNn9Fznoto90NWs7Y99saHrXnhOZVtpjnC65UrlECQGKzB9Sio3oN9NepSPi_jnhd4sdjXmRg0ZGaOU75LZ9Ro3h1UGO02_IpT-lV7-IvPw0i6ueJbc7_N3FQnLfTOW1cGx23YyVdegpqV-v6hsKuRFaIkURqIauD1GHhGZb_46QPautnVbvSheWBftH9IJ4Z3e50Dl6D2cluhOCjRDR0WU72k" class="rounded-circle border border-2" style="width: 48px; height: 48px; object-fit: cover; border-color: var(--ct-primary) !important;" alt="Author">
+                    <div>
+                        <div class="text-white fw-bold small">Marcus Vane</div>
+                        <div class="text-white-50" style="font-size: 0.75rem;">Editor Sênior • 5 min de leitura</div>
+                    </div>
+                </div>
+                
+                <div style="width: 1px; height: 2rem; background-color: rgba(255,255,255,0.2);"></div>
+                
+                <div class="d-flex align-items-center text-primary-brand">
+                    <span class="material-symbols-outlined fs-6" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined fs-6" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined fs-6" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined fs-6" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span class="material-symbols-outlined fs-6 text-white-50">star_half</span>
+                    <span class="text-white fw-bold ms-2">4.8</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Grid -->
+    <div class="container mt-5 pt-3">
+        <div class="row g-5">
+            <!-- Main Article -->
+            <div class="col-lg-8">
+                <article class="fs-5 lh-lg text-muted">
+                    <p class="first-letter-drop">À medida que as fronteiras entre o silício e a sinapse continuam a se confundir, os mais recentes avanços na tecnologia de neuro-link não estão apenas mudando a forma como interagimos com as máquinas — eles estão redefinindo o que significa ser senciente em uma era digital. O último relatório do laboratório de tecnologia ContraTerra sugere que a próxima década testemunhará uma migração de consciência que antes era domínio exclusivo da ficção científica.</p>
+                    
+                    <h2 class="h2 fw-bolder mt-5 mb-4 text-dark d-flex align-items-center gap-3" style="font-family: 'Space Grotesk', sans-serif;">
+                        <span style="width: 2rem; height: 4px; background-color: var(--ct-tertiary); display: inline-block;"></span>
+                        A ARQUITETURA NEURAL
+                    </h2>
+                    
+                    <p class="mb-4">Os implantes tradicionais sofrem há muito tempo com problemas de latência. No entanto, o novo chipset "Vortex" utiliza condutores bio-orgânicos que imitam os neurotransmissores humanos com 99,9% de fidelidade. Esse avanço permite uma transferência de dados quase instantânea, fazendo com que a sensação de navegar na web pareça tão natural quanto uma memória de infância.</p>
+                    
+                    <div class="article-quote">
+                        <p class="fs-4 fw-bold fst-italic text-dark lh-sm position-relative z-1 mb-0" style="font-family: 'Space Grotesk', sans-serif;">
+                            "Não estamos mais apenas construindo ferramentas. Estamos construindo o próximo estágio da evolução humana. O brilho neon não está apenas em nossas telas; está em nossas veias."
+                        </p>
+                        <footer class="mt-3 fw-bold" style="color: var(--ct-secondary);">— Dr. Aris Thorne, Neuro-Arquiteto Chefe</footer>
+                    </div>
+                    
+                    <h3 class="h4 fw-bold mt-5 mb-3 text-dark" style="font-family: 'Space Grotesk', sans-serif;">Fronteiras Éticas e Lacunas Digitais</h3>
+                    <p class="mb-4">Embora as conquistas técnicas sejam inegáveis, as implicações socioeconômicas são impressionantes. Será que esta tecnologia criará uma nova classe de "elite aumentada"? Nossa análise sugere que, sem mudanças políticas radicais, a exclusão digital poderá tornar-se biológica.</p>
+                </article>
+
+                <!-- Rating -->
+                <div class="ct-card-low p-5 mt-5 text-center editorial-shadow">
+                    <h4 class="h5 fw-black text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;">ESTE ARTIGO FOI ÚTIL?</h4>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <button class="btn btn-link p-0 text-muted" onmouseover="this.style.color='var(--ct-primary)'" onmouseout="this.style.color=''">
+                            <span class="material-symbols-outlined display-6">star</span>
+                        </button>
+                        <button class="btn btn-link p-0 text-muted" onmouseover="this.style.color='var(--ct-primary)'" onmouseout="this.style.color=''">
+                            <span class="material-symbols-outlined display-6">star</span>
+                        </button>
+                        <button class="btn btn-link p-0 text-muted" onmouseover="this.style.color='var(--ct-primary)'" onmouseout="this.style.color=''">
+                            <span class="material-symbols-outlined display-6">star</span>
+                        </button>
+                        <button class="btn btn-link p-0 text-muted" onmouseover="this.style.color='var(--ct-primary)'" onmouseout="this.style.color=''">
+                            <span class="material-symbols-outlined display-6">star</span>
+                        </button>
+                        <button class="btn btn-link p-0 text-muted" onmouseover="this.style.color='var(--ct-primary)'" onmouseout="this.style.color=''">
+                            <span class="material-symbols-outlined display-6">star</span>
+                        </button>
+                    </div>
+                    <p class="small text-muted fw-medium mb-0">Junte-se a 1.240 leitores que avaliaram este artigo.</p>
+                </div>
+
+                <!-- Comments Section -->
+                <div class="mt-5 pt-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="h2 fw-black text-uppercase mb-0" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;">DISCUSSÕES <span class="text-tertiary">(24)</span></h3>
+                        <div class="dropdown">
+                            <button class="btn btn-link text-decoration-none fw-bold text-muted p-0 d-flex align-items-center gap-1" type="button" data-bs-toggle="dropdown">
+                                <span class="small">Ordenar por:</span> <span style="color: var(--ct-secondary);">Mais recentes</span> <span class="material-symbols-outlined fs-6" style="color: var(--ct-secondary);">expand_more</span>
+                            </button>
+                            <ul class="dropdown-menu border-0 shadow">
+                                <li><a class="dropdown-item fw-bold" href="#">Mais recentes</a></li>
+                                <li><a class="dropdown-item fw-bold" href="#">Mais curtidos</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Input -->
+                    <div class="d-flex gap-3 mb-5">
+                        <div class="bg-light rounded-3 d-flex align-items-center justify-content-center flex-shrink-0" style="width: 48px; height: 48px;">
+                            <span class="material-symbols-outlined text-muted">person</span>
+                        </div>
+                        <div class="flex-grow-1">
+                            <textarea class="form-control bg-white border-0 p-3 shadow-sm" rows="3" placeholder="Participe do debate editorial..." style="border-radius: 0.75rem; resize: none;"></textarea>
+                            <div class="text-end mt-3">
+                                <button class="btn btn-warning fw-black text-uppercase px-4 py-2" style="background-color: var(--ct-primary); font-size: 0.875rem; letter-spacing: 0.1em; border-radius: 0.75rem;">PUBLICAR COMENTÁRIO</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comment List -->
+                    <div class="d-flex flex-column gap-4">
+                        <!-- Comment 1 -->
+                        <div class="d-flex gap-3">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoLB_4BxOLAIAGm1H4_W_OdhLyBoENpv4M5VF6zuyXnn-AwrBorJu0ewnzywS-pDeFKWWJm3h9SGqkn8ETTAdPRY8x7tSoWknijEpSipM2m1rHoIObw1njlQ2Fehzcdx3lpvzymMCOLVoqE5xjZh63o7bUoR1U9W1IOzzTyRRqqGrwiurdaAQt3NBEJJvDu4GMqjY1LtseF9jJaMkzLC_FfEYlV8S0O7cTobSOb1wHt5tV4NkcH2gYE5lwvSM9wdn3OskLHNs3bYLj" alt="NeoArchitect_99" class="comment-avatar">
+                            <div class="flex-grow-1 border-bottom pb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h5 class="h6 fw-bold mb-0">NeoArchitect_99</h5>
+                                    <span class="small text-muted">2 horas atrás</span>
+                                </div>
+                                <p class="text-muted small mb-2">The latency issue was always the biggest hurdle. If the Vortex chip really hits sub-millisecond response times, the gaming industry is going to change overnight.</p>
+                                <div class="d-flex align-items-center gap-4 mt-2">
+                                    <button class="btn btn-link text-decoration-none text-muted p-0 d-flex align-items-center gap-1 small fw-bold" onmouseover="this.style.color='var(--ct-secondary)'" onmouseout="this.style.color=''">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">thumb_up</span> 14
+                                    </button>
+                                    <button class="btn btn-link text-decoration-none text-muted p-0 small fw-bold text-uppercase" style="letter-spacing: 0.1em;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">
+                                        Responder
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Comment 2 -->
+                        <div class="d-flex gap-3">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUunhJahYhgk8HleSqv90EOVOByBH1JCK8p7z-jSjs8Fqss4IdnZ4zSO7SR-CpQ6h0HfnJ0xQKfgarPGGNpyyPabUgHPed_Bfdqf0AEI-dTj8dYHLnqyDDcFRFKsX0pfyqsAfArqE_rggusBVezXfq5Ugscs1pmisdKB9rhWACbmKBWrq4J2V54QpcRWlgYRSlOWR7yObXNF8B8t-4PGVTtNiI-mvPmp6eTLnBQCIauVKcoyalmXi-Wv4c9Nl1an-3j3TVv5qjSpl" alt="Elena_Thal" class="comment-avatar">
+                            <div class="flex-grow-1 border-bottom pb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h5 class="h6 fw-bold mb-0">Elena_Thal</h5>
+                                    <span class="small text-muted">5 horas atrás</span>
+                                </div>
+                                <p class="text-muted small mb-2">Great point about the biological divide. We're looking at a future where your bank account determines your cognitive speed. Scary stuff.</p>
+                                <div class="d-flex align-items-center gap-4 mt-2">
+                                    <button class="btn btn-link text-decoration-none text-muted p-0 d-flex align-items-center gap-1 small fw-bold" onmouseover="this.style.color='var(--ct-secondary)'" onmouseout="this.style.color=''">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">thumb_up</span> 8
+                                    </button>
+                                    <button class="btn btn-link text-decoration-none text-muted p-0 small fw-bold text-uppercase" style="letter-spacing: 0.1em;" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">
+                                        Responder
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Trending Categories -->
+                <div class="ct-card-low p-4 mb-5">
+                    <h4 class="h5 fw-black text-uppercase mb-4 d-flex align-items-center gap-2" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;">
+                        <span style="width: 8px; height: 24px; background-color: var(--ct-secondary); display: inline-block;"></span> TENDÊNCIAS
+                    </h4>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="#" class="tag-pill">#Cyberware</a>
+                        <a href="#" class="tag-pill">#MetaNews</a>
+                        <a href="#" class="tag-pill">#AI_Rights</a>
+                        <a href="#" class="tag-pill">#MarsExpedition</a>
+                        <a href="#" class="tag-pill">#QuantumSim</a>
+                    </div>
+                </div>
+
+                <!-- Related News -->
+                <div class="mb-5">
+                    <h4 class="h5 fw-black text-uppercase mb-4 d-flex align-items-center gap-2" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;">
+                        <span style="width: 8px; height: 24px; background-color: var(--ct-primary); display: inline-block;"></span> MERGULHOS PROFUNDOS
+                    </h4>
+                    
+                    <div class="d-flex flex-column gap-4">
+                        <a href="#" class="related-card">
+                            <div class="related-card-img-wrapper">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB_6i3OEFj8iMIThumCwYBnXjsY9u7ae0_J0dxXP4PlBvhebEbQSHdZrtLQCd_fvPN1j90eNwRXTcYuCQWMGyV4UbxDWywVWt2KhJlZs0EsSJg5Gdfy70jBf0OPwhTCwHAE4wRQNUef_kn8kQrf0BnFycuwVhVlM9V4ZsHQZbGw8Zz3MqNKUKovnYnDwTrsiDTeFJkyc9pnzp9FCIb1ilGRF24UaAc5CZX_LEFA-9VOqLjrgf8OFRgq-Iw9GWjN1sqi1Zktt3VjjN3" alt="Post" class="related-card-img">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <span class="fw-black text-uppercase mb-1" style="color: var(--ct-secondary); font-size: 0.65rem; letter-spacing: 0.1em;">Hardware</span>
+                                <h5 class="h6 fw-bold mb-1 related-title" style="font-family: 'Space Grotesk', sans-serif;">A Crise do Resfriamento: Por que nossos chips estão derretendo</h5>
+                                <span class="text-muted" style="font-size: 0.65rem;">Oct 12 • 4 min read</span>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="related-card">
+                            <div class="related-card-img-wrapper">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6taFM_oe3dPJ5UwjquCZZyy4H1y7oey29DReoYrllfnJk_7ml0SNAhL8La3tY324YeSa1Z6J0q4sKN0EMLw_YKsR1KZekWlcHEolcm7xs3M8bbSY59dSn9ghVTR4meDKE-z2l02DFQ64TJy6u9P10UwsQ6Vegjjq1kcpfyACqXouWL-AQto28EChUflGtpmwGEak9aSMIYSTtTfRJQwgB7EA43Mmakq1GfG3_tU7rnKekxB6ArU6KptUQh276EztKWDTUfo1hb8S" alt="Post" class="related-card-img">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <span class="fw-black text-uppercase mb-1" style="color: var(--ct-secondary); font-size: 0.65rem; letter-spacing: 0.1em;">Robotics</span>
+                                <h5 class="h6 fw-bold mb-1 related-title" style="font-family: 'Space Grotesk', sans-serif;">Projetando Empatia: Os Novos Protocolos Humanoides</h5>
+                                <span class="text-muted" style="font-size: 0.65rem;">Oct 10 • 7 min read</span>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="related-card">
+                            <div class="related-card-img-wrapper">
+                                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD22xADZOL1r6sE-SMs-Ov7s3uFDis07w_mi18Y-XGW3rcTMxKrzhcx5PWkZ_yx6PXX7rdHWFZmOE8ccBNnl9Dg5MYwoyNrPLPt8He3z8L4mZcJNFrvTgzwYgkuDZEzD8tD--npoUl_YGjo8pbsAb1AY_Ou1EcRn-Uxkw4pbYB4DqmMYSyAMJw674CHQpllGyY0PSay9RXuTHT7bw3wrOzYeOwcfAiWU5LZN9J7ofRJMOmv4xNbiENzjCG8YjefpUs7eeqefdfJCHMZ" alt="Post" class="related-card-img">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                                <span class="fw-black text-uppercase mb-1" style="color: var(--ct-secondary); font-size: 0.65rem; letter-spacing: 0.1em;">Space</span>
+                                <h5 class="h6 fw-bold mb-1 related-title" style="font-family: 'Space Grotesk', sans-serif;">Ética Orbital: Quem é o dono do céu noturno?</h5>
+                                <span class="text-muted" style="font-size: 0.65rem;">Oct 08 • 5 min read</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ad/CTA Section -->
+                <div class="cta-sidebar editorial-shadow">
+                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAP0mLOuwW0QiEV2_BkkX2-TOQPFYo5tcRUZ90ZnyYBjc798RB0G2RAL30xxcRdJcocPg5sr4wyFblVoUbG_dDvOMJjHN8rrQci_YQGraU8ij3he9Bu1qj5qb8A1WWLQKSLPQ4_Cvh16OUZDuQxNCuUxJ-ZURtVXou-vHURBTy9e6WZyGLz_zc-23qi_GsQBjNL-YwE0o4lDV045qipqdFeaW3kR7bmzV2WIJ_12IjcHqhjHsSCTkVnfVjaqRf16C-JPT1NnPSTfcU" class="cta-sidebar-bg" alt="BG">
+                    <div class="position-relative z-1">
+                        <h4 class="h3 fw-black fst-italic mb-3" style="color: var(--ct-primary); font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;">JUNTE-SE AO UNDERGROUND</h4>
+                        <p class="small text-light mb-4">Receba nosso resumo semanal via neuro-link criptografado.</p>
+                        <button class="btn btn-success w-100 fw-bold py-3 text-uppercase" style="background-color: var(--ct-secondary-container); color: var(--ct-on-secondary-container); border: none; letter-spacing: 0.1em; border-radius: 0.75rem;" onmouseover="this.style.backgroundColor='var(--ct-tertiary)'; this.style.color='#fff';" onmouseout="this.style.backgroundColor='var(--ct-secondary-container)'; this.style.color='var(--ct-on-secondary-container)';">
+                            Inscreva-se Agora
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-light border-top py-5 mt-5">
+    <div class="container-fluid max-w-7xl px-4 px-lg-5">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
+            <div class="text-center text-md-start">
+                <div class="h4 fw-bolder fst-italic text-uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">ContraTerra</div>
+                <p class="text-muted small mb-0">© 2026 ContraTerra. The Neon Editorial.</p>
+            </div>
+            
+            <ul class="list-inline mb-0 text-center">
+                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small d-inline-block" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">Sobre Nós</a></li>
+                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small d-inline-block" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">Política Editorial</a></li>
+                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small d-inline-block" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">Anunciar</a></li>
+                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small d-inline-block" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">Privacidade</a></li>
+                <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none fw-medium small d-inline-block" onmouseover="this.style.color='var(--ct-tertiary)'" onmouseout="this.style.color=''">Contato</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to top -->
+<a href="#" class="btn-scroll-top">
+    <span class="material-symbols-outlined fw-bold">arrow_upward</span>
+</a>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

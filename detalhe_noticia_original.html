@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed-dim": "#46e397",
+              "on-primary-fixed-variant": "#655300",
+              "on-secondary-container": "#005734",
+              "on-tertiary-fixed-variant": "#77002c",
+              "on-tertiary-container": "#670025",
+              "on-primary-fixed": "#443700",
+              "background": "#f6f6f6",
+              "on-surface-variant": "#5a5c5c",
+              "surface-variant": "#dbdddd",
+              "on-tertiary": "#ffeff0",
+              "inverse-surface": "#0c0f0f",
+              "inverse-primary": "#fed400",
+              "error": "#b02500",
+              "surface-container-high": "#e1e3e3",
+              "secondary-dim": "#005c37",
+              "on-background": "#2d2f2f",
+              "outline-variant": "#acadad",
+              "on-secondary-fixed-variant": "#00613b",
+              "on-primary-container": "#5a4900",
+              "surface-container-highest": "#dbdddd",
+              "surface-container": "#e7e8e8",
+              "primary-fixed-dim": "#eec600",
+              "tertiary": "#b70048",
+              "on-error-container": "#520c00",
+              "on-primary": "#fff2cf",
+              "secondary": "#006940",
+              "on-error": "#ffefec",
+              "tertiary-dim": "#a1003e",
+              "inverse-on-surface": "#9c9d9d",
+              "tertiary-fixed": "#ff8fa3",
+              "surface-tint": "#6d5a00",
+              "primary": "#6d5a00",
+              "primary-dim": "#5f4e00",
+              "error-dim": "#b92902",
+              "on-secondary": "#caffdb",
+              "secondary-container": "#58f2a4",
+              "on-surface": "#2d2f2f",
+              "secondary-fixed": "#58f2a4",
+              "on-secondary-fixed": "#004126",
+              "surface-container-lowest": "#ffffff",
+              "surface": "#f6f6f6",
+              "outline": "#767777",
+              "surface-container-low": "#f0f1f1",
+              "tertiary-fixed-dim": "#ff7793",
+              "surface-dim": "#d3d5d5",
+              "surface-bright": "#f6f6f6",
+              "primary-container": "#fed400",
+              "error-container": "#f95630",
+              "tertiary-container": "#ff8fa3",
+              "on-tertiary-fixed": "#390011",
+              "primary-fixed": "#fed400"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 60px -15px rgba(0,0,0,0.06);
+        }
+        .slash-decorator {
+            clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-[0_40px_60px_-15px_rgba(0,0,0,0.06)]">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+<div class="text-2xl font-black italic tracking-tighter uppercase text-zinc-900">ContraTerra</div>
+<div class="hidden md:flex items-center gap-8 font-headline font-bold tracking-tight">
+<a class="text-yellow-500 border-b-2 border-yellow-400 pb-1" href="#">Notícias</a>
+<a class="text-zinc-600 hover:text-tertiary transition-colors" href="#">Filmes</a>
+<a class="text-zinc-600 hover:text-tertiary transition-colors" href="#">Séries</a>
+<a class="text-zinc-600 hover:text-tertiary transition-colors" href="#">Jogos</a>
+<a class="text-zinc-600 hover:text-tertiary transition-colors" href="#">Tec</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface hover:scale-105 transition-transform" data-icon="search">search</button>
+<button class="bg-secondary-container text-on-secondary-container px-6 py-2 rounded-xl font-bold hover:bg-tertiary hover:text-on-tertiary transition-all active:scale-95">Entrar</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-20">
+<!-- Hero Section -->
+<section class="relative w-full h-[716px] overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Cinematic high-angle shot of a futuristic cyberpunk city at night with glowing neon yellow and pink lights reflecting in rain puddles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCArGqjytvOKkI9qJS1EEn1oE4SuADFmTeP5AxclVyAWwF33cBhSpr2n18jqR_F3b5Gz2Wpl_2UzOHps5Bl3-Vkglv3medLljW6OpE88HJmvKxMLLRWLcIw-5Bdn05XKNvRENsGpO7VYEKh1vgQD7kyEuLAEqlNpxb9zIvLWfoxkvgrHjP1hlS-lOX2YXduloFcKlld0oev-MQ4YkU74-81Fy_cQMCgN7xl93-g2CBsT596LMcDfwGhCnJASRcULaPfBxH6hAcS8szK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full p-8 md:p-16 max-w-7xl mx-auto">
+<nav class="flex items-center gap-2 mb-6 text-primary-fixed font-headline font-bold text-sm tracking-widest uppercase">
+<a class="hover:text-white transition-colors" href="#">Notícias</a>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-white transition-colors" href="#">Tec</a>
+<span class="material-symbols-outlined text-[12px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-surface-variant">Aprimoramentos Cibernéticos</span>
+</nav>
+<h1 class="text-white font-headline font-black text-5xl md:text-7xl leading-tight tracking-tighter max-w-4xl drop-shadow-2xl">A FRONTEIRA NEON: <br/>REESCREVENDO A BIOLOGIA HUMANA</h1>
+<div class="flex items-center gap-6 mt-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional editorial writer with a modern look and soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWCoqwn7WecKk1IW235CknUepMlTai8qCjMBudOOfTVMrWM0h8sdYNn9Fznoto90NWs7Y99saHrXnhOZVtpjnC65UrlECQGKzB9Sio3oN9NepSPi_jnhd4sdjXmRg0ZGaOU75LZ9Ro3h1UGO02_IpT-lV7-IvPw0i6ueJbc7_N3FQnLfTOW1cGx23YyVdegpqV-v6hsKuRFaIkURqIauD1GHhGZb_46QPautnVbvSheWBftH9IJ4Z3e50Dl6D2cluhOCjRDR0WU72k"/>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Marcus Vane</p>
+<p class="text-zinc-400 text-xs">Editor Sênior • 5 min de leitura</p>
+</div>
+</div>
+<div class="h-8 w-[1px] bg-zinc-700"></div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-zinc-600" data-icon="star_half">star_half</span>
+<span class="text-white font-bold ml-2">4.8</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="max-w-7xl mx-auto px-6 mt-16 grid grid-cols-1 lg:grid-cols-12 gap-16">
+<!-- Main Article -->
+<article class="lg:col-span-8">
+<div class="prose prose-zinc lg:prose-xl dark:prose-invert max-w-none">
+<p class="text-xl leading-relaxed text-on-surface font-light first-letter:text-7xl first-letter:font-black first-letter:text-primary first-letter:mr-3 first-letter:float-left">À medida que as fronteiras entre o silício e a sinapse continuam a se confundir, os mais recentes avanços na tecnologia de neuro-link não estão apenas mudando a forma como interagimos com as máquinas — eles estão redefinindo o que significa ser senciente em uma era digital. O último relatório do laboratório de tecnologia ContraTerra sugere que a próxima década testemunhará uma migração de consciência que antes era domínio exclusivo da ficção científica.</p>
+<h2 class="font-headline font-extrabold text-3xl mt-12 mb-6 flex items-center gap-4"><span class="w-8 h-1 bg-tertiary block"></span>A ARQUITETURA NEURAL</h2>
+<p class="mb-8 leading-relaxed text-on-surface-variant">Os implantes tradicionais sofrem há muito tempo com problemas de latência. No entanto, o novo chipset "Vortex" utiliza condutores bio-orgânicos que imitam os neurotransmissores humanos com 99,9% de fidelidade. Esse avanço permite uma transferência de dados quase instantânea, fazendo com que a sensação de navegar na web pareça tão natural quanto uma memória de infância.</p>
+<blockquote class="my-12 p-8 bg-surface-container-low border-l-8 border-primary rounded-xl relative overflow-hidden">
+<span class="material-symbols-outlined absolute -top-4 -left-2 text-primary opacity-20 text-9xl pointer-events-none" data-icon="format_quote">format_quote</span>
+<p class="text-2xl font-headline font-bold italic text-on-surface leading-snug relative z-10">"Não estamos mais apenas construindo ferramentas. Estamos construindo o próximo estágio da evolução humana. O brilho neon não está apenas em nossas telas; está em nossas veias."</p>
+<cite class="block mt-4 text-secondary font-bold not-italic">— Dr. Aris Thorne, Neuro-Arquiteto Chefe</cite>
+</blockquote>
+<h3 class="font-headline font-bold text-2xl mt-10 mb-4">Fronteiras Éticas e Lacunas Digitais</h3>
+<p class="mb-6 leading-relaxed text-on-surface-variant">Embora as conquistas técnicas sejam inegáveis, as implicações socioeconômicas são impressionantes. Será que esta tecnologia criará uma nova classe de "elite aumentada"? Nossa análise sugere que, sem mudanças políticas radicais, a exclusão digital poderá tornar-se biológica.</p>
+</div>
+<!-- Rating Section -->
+<div class="mt-16 p-8 bg-surface-container rounded-2xl flex flex-col items-center editorial-shadow">
+<h4 class="font-headline font-black text-xl mb-4 tracking-tight">ESTE ARTIGO FOI ÚTIL?</h4>
+<div class="flex gap-2 mb-4">
+<button class="material-symbols-outlined text-4xl text-on-surface-variant hover:text-primary transition-colors" data-icon="star">star</button>
+<button class="material-symbols-outlined text-4xl text-on-surface-variant hover:text-primary transition-colors" data-icon="star">star</button>
+<button class="material-symbols-outlined text-4xl text-on-surface-variant hover:text-primary transition-colors" data-icon="star">star</button>
+<button class="material-symbols-outlined text-4xl text-on-surface-variant hover:text-primary transition-colors" data-icon="star">star</button>
+<button class="material-symbols-outlined text-4xl text-on-surface-variant hover:text-primary transition-colors" data-icon="star">star</button>
+</div>
+<p class="text-sm text-on-surface-variant font-medium">Junte-se a 1.240 leitores que avaliaram este artigo.</p>
+</div>
+<!-- Interaction Section: Comments -->
+<div class="mt-20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline font-black text-3xl tracking-tighter uppercase">DISCUSSÕES <span class="text-tertiary">(24)</span></h3>
+<div class="flex items-center gap-2 text-sm font-bold text-on-surface-variant">
+<span>Ordenar por:</span>
+<button class="flex items-center gap-1 text-secondary">Mais recentes <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span></button>
+</div>
+</div>
+<!-- Comment Input -->
+<div class="flex gap-4 mb-12">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+<div class="flex-1">
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary min-h-[100px] text-on-surface transition-all editorial-shadow" placeholder="Participe do debate editorial..."></textarea>
+<div class="flex justify-end mt-4">
+<button class="bg-primary text-on-primary-container px-8 py-2 rounded-xl font-black uppercase tracking-widest text-sm hover:scale-105 transition-transform active:scale-95">PUBLICAR COMENTÁRIO</button>
+</div>
+</div>
+</div>
+<!-- Comment List -->
+<div class="space-y-8">
+<!-- Comment 1 -->
+<div class="flex gap-4 group">
+<div class="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Profile avatar of a young tech enthusiast in a urban setting with blurred lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoLB_4BxOLAIAGm1H4_W_OdhLyBoENpv4M5VF6zuyXnn-AwrBorJu0ewnzywS-pDeFKWWJm3h9SGqkn8ETTAdPRY8x7tSoWknijEpSipM2m1rHoIObw1njlQ2Fehzcdx3lpvzymMCOLVoqE5xjZh63o7bUoR1U9W1IOzzTyRRqqGrwiurdaAQt3NBEJJvDu4GMqjY1LtseF9jJaMkzLC_FfEYlV8S0O7cTobSOb1wHt5tV4NkcH2gYE5lwvSM9wdn3OskLHNs3bYLj"/>
+</div>
+<div class="flex-1 pb-8 border-b border-surface-container">
+<div class="flex items-center justify-between mb-2">
+<h5 class="font-bold text-on-surface">NeoArchitect_99</h5>
+<span class="text-xs text-on-surface-variant">2 horas atrás</span>
+</div>
+<p class="text-on-surface-variant mb-4">The latency issue was always the biggest hurdle. If the Vortex chip really hits sub-millisecond response times, the gaming industry is going to change overnight.</p>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-1 text-xs font-bold text-on-surface-variant hover:text-secondary"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 14</button>
+<button class="text-xs font-bold text-on-surface-variant hover:text-tertiary uppercase tracking-wider">RESPONDER</button>
+</div>
+</div>
+</div>
+<!-- Comment 2 -->
+<div class="flex gap-4 group">
+<div class="w-12 h-12 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Profile avatar of a modern woman with a stylish, tech-forward aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgUunhJahYhgk8HleSqv90EOVOByBH1JCK8p7z-jSjs8Fqss4IdnZ4zSO7SR-CpQ6h0HfnJ0xQKfgarPGGNpyyPabUgHPed_Bfdqf0AEI-dTj8dYHLnqyDDcFRFKsX0pfyqsAfArqE_rggusBVezXfq5Ugscs1pmisdKB9rhWACbmKBWrq4J2V54QpcRWlgYRSlOWR7yObXNF8B8t-4PGVTtNiI-mvPmp6eTLnBQCIauVKcoyalmXi-Wv4c9Nl1an-3j3TVv5qjSpl"/>
+</div>
+<div class="flex-1 pb-8 border-b border-surface-container">
+<div class="flex items-center justify-between mb-2">
+<h5 class="font-bold text-on-surface">Elena_Thal</h5>
+<span class="text-xs text-on-surface-variant">5 horas atrás</span>
+</div>
+<p class="text-on-surface-variant mb-4">Great point about the biological divide. We're looking at a future where your bank account determines your cognitive speed. Scary stuff.</p>
+<div class="flex items-center gap-6">
+<button class="flex items-center gap-1 text-xs font-bold text-on-surface-variant hover:text-secondary"><span class="material-symbols-outlined text-sm" data-icon="thumb_up">thumb_up</span> 8</button>
+<button class="text-xs font-bold text-on-surface-variant hover:text-tertiary uppercase tracking-wider">RESPONDER</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Sidebar -->
+<aside class="lg:col-span-4 space-y-12">
+<!-- Trending Categories -->
+<div class="bg-surface-container-low p-6 rounded-2xl">
+<h4 class="font-headline font-black text-lg mb-6 tracking-tight uppercase flex items-center gap-2"><span class="w-2 h-6 bg-secondary block"></span>TENDÊNCIAS</h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold hover:bg-tertiary hover:text-white transition-colors" href="#">#Cyberware</a>
+<a class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold hover:bg-tertiary hover:text-white transition-colors" href="#">#MetaNews</a>
+<a class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold hover:bg-tertiary hover:text-white transition-colors" href="#">#AI_Rights</a>
+<a class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold hover:bg-tertiary hover:text-white transition-colors" href="#">#MarsExpedition</a>
+<a class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold hover:bg-tertiary hover:text-white transition-colors" href="#">#QuantumSim</a>
+</div>
+</div>
+<!-- Related News -->
+<div class="space-y-6">
+<h4 class="font-headline font-black text-lg tracking-tight uppercase flex items-center gap-2"><span class="w-2 h-6 bg-primary block"></span>MERGULHOS PROFUNDOS</h4>
+<!-- Related Card 1 -->
+<a class="group block" href="#">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Macro photography of glowing computer circuits and microchips with sharp focus and cinematic depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB_6i3OEFj8iMIThumCwYBnXjsY9u7ae0_J0dxXP4PlBvhebEbQSHdZrtLQCd_fvPN1j90eNwRXTcYuCQWMGyV4UbxDWywVWt2KhJlZs0EsSJg5Gdfy70jBf0OPwhTCwHAE4wRQNUef_kn8kQrf0BnFycuwVhVlM9V4ZsHQZbGw8Zz3MqNKUKovnYnDwTrsiDTeFJkyc9pnzp9FCIb1ilGRF24UaAc5CZX_LEFA-9VOqLjrgf8OFRgq-Iw9GWjN1sqi1Zktt3VjjN3"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[10px] font-black text-secondary tracking-widest uppercase mb-1">Hardware</span>
+<h5 class="font-headline font-bold text-sm leading-tight group-hover:text-tertiary transition-colors">A Crise do Resfriamento: Por que nossos chips estão derretendo</h5>
+<p class="text-[10px] text-on-surface-variant mt-1">Oct 12 • 4 min read</p>
+</div>
+</div>
+</a>
+<!-- Related Card 2 -->
+<a class="group block" href="#">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sleek silver robotic hand reaching out in front of a dark minimalist background with soft white lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu6taFM_oe3dPJ5UwjquCZZyy4H1y7oey29DReoYrllfnJk_7ml0SNAhL8La3tY324YeSa1Z6J0q4sKN0EMLw_YKsR1KZekWlcHEolcm7xs3M8bbSY59dSn9ghVTR4meDKE-z2l02DFQ64TJy6u9P10UwsQ6Vegjjq1kcpfyACqXouWL-AQto28EChUflGtpmwGEak9aSMIYSTtTfRJQwgB7EA43Mmakq1GfG3_tU7rnKekxB6ArU6KptUQh276EztKWDTUfo1hb8S"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[10px] font-black text-secondary tracking-widest uppercase mb-1">Robotics</span>
+<h5 class="font-headline font-bold text-sm leading-tight group-hover:text-tertiary transition-colors">Projetando Empatia: Os Novos Protocolos Humanoides</h5>
+<p class="text-[10px] text-on-surface-variant mt-1">Oct 10 • 7 min read</p>
+</div>
+</div>
+</a>
+<!-- Related Card 3 -->
+<a class="group block" href="#">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0 relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Satellite view of Earth at night with glowing network of city lights and blue atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD22xADZOL1r6sE-SMs-Ov7s3uFDis07w_mi18Y-XGW3rcTMxKrzhcx5PWkZ_yx6PXX7rdHWFZmOE8ccBNnl9Dg5MYwoyNrPLPt8He3z8L4mZcJNFrvTgzwYgkuDZEzD8tD--npoUl_YGjo8pbsAb1AY_Ou1EcRn-Uxkw4pbYB4DqmMYSyAMJw674CHQpllGyY0PSay9RXuTHT7bw3wrOzYeOwcfAiWU5LZN9J7ofRJMOmv4xNbiENzjCG8YjefpUs7eeqefdfJCHMZ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-[10px] font-black text-secondary tracking-widest uppercase mb-1">Space</span>
+<h5 class="font-headline font-bold text-sm leading-tight group-hover:text-tertiary transition-colors">Ética Orbital: Quem é o dono do céu noturno?</h5>
+<p class="text-[10px] text-on-surface-variant mt-1">Oct 08 • 5 min read</p>
+</div>
+</div>
+</a>
+</div>
+<!-- Ad/CTA Section -->
+<div class="relative rounded-2xl overflow-hidden p-8 text-center editorial-shadow bg-zinc-900 group">
+<div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Abstract retro-futuristic patterns with glowing light tubes and tech textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAP0mLOuwW0QiEV2_BkkX2-TOQPFYo5tcRUZ90ZnyYBjc798RB0G2RAL30xxcRdJcocPg5sr4wyFblVoUbG_dDvOMJjHN8rrQci_YQGraU8ij3he9Bu1qj5qb8A1WWLQKSLPQ4_Cvh16OUZDuQxNCuUxJ-ZURtVXou-vHURBTy9e6WZyGLz_zc-23qi_GsQBjNL-YwE0o4lDV045qipqdFeaW3kR7bmzV2WIJ_12IjcHqhjHsSCTkVnfVjaqRf16C-JPT1NnPSTfcU"/>
+</div>
+<div class="relative z-10">
+<h4 class="font-headline font-black text-2xl text-primary mb-4 italic tracking-tighter">JUNTE-SE AO UNDERGROUND</h4>
+<p class="text-white text-sm mb-6 leading-relaxed">Receba nosso resumo semanal via neuro-link criptografado.</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-3 rounded-xl font-black uppercase tracking-widest hover:bg-tertiary hover:text-white transition-all">INSCREVA-SE AGORA</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 mt-20 border-t border-zinc-200/20 bg-zinc-50">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="font-headline font-black text-xl text-zinc-900">ContraTerra</div>
+<div class="flex gap-8 font-label text-sm text-zinc-500">
+<a class="hover:text-pink-500 underline decoration-2 underline-offset-4 transition-colors" href="#">Sobre Nós</a>
+<a class="hover:text-pink-500 underline decoration-2 underline-offset-4 transition-colors" href="#">Política Editorial</a>
+<a class="hover:text-pink-500 underline decoration-2 underline-offset-4 transition-colors" href="#">Publicidade</a>
+<a class="hover:text-pink-500 underline decoration-2 underline-offset-4 transition-colors" href="#">Privacidade</a>
+<a class="hover:text-pink-500 underline decoration-2 underline-offset-4 transition-colors" href="#">Contato</a>
+</div>
+<div class="font-label text-sm text-zinc-500">© 2024 ContraTerra. O Editorial Neon.</div>
+</div>
+</footer>
+<!-- Floating Back Button -->
+<a class="fixed bottom-8 right-8 w-14 h-14 bg-primary rounded-full flex items-center justify-center text-on-primary-container shadow-2xl hover:scale-110 transition-transform z-40" href="#">
+<span class="material-symbols-outlined font-bold" data-icon="arrow_upward">arrow_upward</span>
+</a>
+</body></html>
