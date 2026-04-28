@@ -1,300 +1,664 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ContraTerra | The Neon Editorial</title>
-    
+
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@400;600;700;900&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap 5.3 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+    <link
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/style.css" />
+
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        .slash-decorator {
-            clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-            position: absolute;
-            bottom: -1.5rem;
-            left: -1.5rem;
-            width: 8rem;
-            height: 8rem;
-            background-color: rgba(255, 45, 111, 0.2);
-            z-index: -1;
-        }
-        .image-diagonal-mask {
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
-        .hero-img {
-            height: 600px;
-            object-fit: cover;
-            width: 100%;
-            opacity: 0.8;
-            transition: transform 0.7s;
-        }
-        .hero-container:hover .hero-img {
-            transform: scale(1.05);
-        }
-        .bg-gradient-t {
-            background: linear-gradient(to top, var(--ct-on-surface) 0%, transparent 100%);
-        }
-        .bg-gradient-hero {
-            background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-        }
-        
-        .ticker {
-            position: fixed;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1050;
-            white-space: nowrap;
-        }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .slash-decorator {
+        clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+        position: absolute;
+        bottom: -1.5rem;
+        left: -1.5rem;
+        width: 8rem;
+        height: 8rem;
+        background-color: rgba(255, 45, 111, 0.2);
+        z-index: -1;
+      }
+      .image-diagonal-mask {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      }
+      .hero-img {
+        height: 600px;
+        object-fit: cover;
+        width: 100%;
+        opacity: 0.8;
+        transition: transform 0.7s;
+      }
+      .hero-container:hover .hero-img {
+        transform: scale(1.05);
+      }
+      .bg-gradient-t {
+        background: linear-gradient(
+          to top,
+          var(--ct-on-surface) 0%,
+          transparent 100%
+        );
+      }
+      .bg-gradient-hero {
+        background: linear-gradient(
+          to top,
+          #000 0%,
+          rgba(0, 0, 0, 0.4) 50%,
+          transparent 100%
+        );
+      }
 
-        .category-badge {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 900;
-        }
+      .ticker {
+        position: fixed;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1050;
+        white-space: nowrap;
+      }
 
-        .hover-scale {
-            transition: transform 0.3s ease;
-        }
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-        
-        .article-img {
-            height: 14rem;
-            object-fit: cover;
-            width: 100%;
-            transition: transform 0.5s;
-        }
-        
-        .article-card:hover .article-img {
-            transform: scale(1.1);
-        }
+      .category-badge {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 900;
+      }
+
+      .hover-scale {
+        transition: transform 0.3s ease;
+      }
+      .hover-scale:hover {
+        transform: scale(1.05);
+      }
+
+      .article-img {
+        height: 14rem;
+        object-fit: cover;
+        width: 100%;
+        transition: transform 0.5s;
+      }
+
+      .article-card:hover .article-img {
+        transform: scale(1.1);
+      }
     </style>
-</head>
-<body class="pt-5 mt-4">
-
-<!-- TopNavBar -->
-<nav class="navbar navbar-expand-lg fixed-top ct-glass shadow-sm py-3">
-    <div class="container-fluid max-w-7xl px-4 px-lg-5">
-        <a class="navbar-brand text-uppercase fw-bolder fst-italic" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.05em;" href="#">
-            ContraTerra
+  </head>
+  <body class="pt-5 mt-4">
+    <!-- TopNavBar -->
+    <nav class="navbar navbar-expand-lg fixed-top ct-glass shadow-sm py-3">
+      <div class="container-fluid max-w-7xl px-4 px-lg-5">
+        <a
+          class="navbar-brand text-uppercase fw-bolder fst-italic"
+          style="
+            font-family: &quot;Space Grotesk&quot;, sans-serif;
+            letter-spacing: -0.05em;
+          "
+          href="#"
+        >
+          ContraTerra
         </a>
-        
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto gap-3 fw-bold text-uppercase" style="font-family: 'Space Grotesk', sans-serif; font-size: 0.9rem;">
-                <li class="nav-item">
-                    <a class="nav-link text-primary-brand border-bottom border-warning border-2" href="#">Notícias</a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-secondary hover-scale" href="#">Filmes</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary hover-scale" href="#">Séries</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary hover-scale" href="#">Games</a></li>
-                <li class="nav-item"><a class="nav-link text-secondary hover-scale" href="#">Tecnologia</a></li>
-            </ul>
-            
-            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-                <div class="d-none d-lg-flex align-items-center bg-light rounded-pill px-3 py-2">
-                    <span class="material-symbols-outlined text-muted fs-6 me-2">search</span>
-                    <input class="form-control-plaintext form-control-sm border-0 bg-transparent p-0 w-auto" placeholder="Pesquisar no multiverso" type="text" style="outline: none; box-shadow: none;">
-                </div>
-                <button class="btn btn-primary px-4 rounded-pill fw-bold text-uppercase" style="font-size: 0.85rem; letter-spacing: 0.05em;">Entrar</button>
-            </div>
-        </div>
-    </div>
-</nav>
 
-<main class="container-fluid max-w-7xl px-4 px-lg-5 py-5">
-    
-    <!-- Hero Section -->
-    <section class="position-relative mb-5 hero-container cursor-pointer" style="cursor: pointer;">
-        <div class="row g-0 rounded-4 overflow-hidden shadow-lg bg-dark text-white position-relative z-1" style="background-color: var(--ct-on-surface) !important;">
-            <div class="col-md-8 position-relative">
-                <img class="hero-img image-diagonal-mask" src="https://res.cloudinary.com/dc0qqgkmp/image/upload/v1774442754/framework-css/maxresdefault_qi6ord.png" alt="Hero">
-                <div class="position-absolute top-0 bottom-0 start-0 end-0 bg-gradient-t pointer-events-none"></div>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul
+            class="navbar-nav mx-auto gap-3 fw-bold text-uppercase"
+            style="
+              font-family: &quot;Space Grotesk&quot;, sans-serif;
+              font-size: 0.9rem;
+            "
+          >
+            <li class="nav-item">
+              <a
+                class="nav-link text-primary-brand border-bottom border-warning border-2"
+                href="#"
+                >Notícias</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary hover-scale" href="#">Filmes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary hover-scale" href="#">Séries</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary hover-scale" href="#">Games</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-secondary hover-scale" href="#"
+                >Tecnologia</a
+              >
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <div
+              class="d-none d-lg-flex align-items-center bg-light rounded-pill px-3 py-2"
+            >
+              <span class="material-symbols-outlined text-muted fs-6 me-2"
+                >search</span
+              >
+              <input
+                class="form-control-plaintext form-control-sm border-0 bg-transparent p-0 w-auto"
+                placeholder="Pesquisar no multiverso"
+                type="text"
+                style="outline: none; box-shadow: none"
+              />
             </div>
-            <div class="col-md-4 p-5 d-flex flex-column justify-content-center">
-                <div class="d-flex align-items-center gap-2 mb-4">
-                    <span class="badge bg-primary-brand text-dark rounded-0 px-2 py-1 category-badge">EXCLUSIVO</span>
-                    <div class="bg-danger" style="height: 4px; width: 40px; background-color: var(--ct-tertiary) !important;"></div>
-                </div>
-                <h1 class="display-3 fw-bolder lh-1 mb-4" style="letter-spacing: -0.05em;">NVIDIA<br><span class="text-primary-brand">DLSS 5</span></h1>
-                <p class="text-light fw-light fs-5 mb-5 opacity-75">Avanços revolucionários em fidelidade visual para jogos, impulsionados por IA</p>
-                <button class="btn btn-link text-decoration-none p-0 d-flex align-items-center text-white hover-scale" style="width: fit-content;">
-                    <span class="rounded-circle d-flex align-items-center justify-content-center" style="background-color: var(--ct-secondary); width: 48px; height: 48px;">
-                        <span class="material-symbols-outlined">play_arrow</span>
-                    </span>
-                    <span class="ms-3 fw-bolder text-uppercase category-badge">LER DOSSIÊ COMPLETO</span>
-                </button>
+            <button
+              class="btn btn-primary px-4 rounded-pill fw-bold text-uppercase"
+              style="font-size: 0.85rem; letter-spacing: 0.05em"
+            >
+              Entrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container-fluid max-w-7xl px-4 px-lg-5 py-5">
+      <!-- Hero Section -->
+      <section
+        class="position-relative mb-5 hero-container cursor-pointer"
+        style="cursor: pointer"
+      >
+        <div
+          class="row g-0 rounded-4 overflow-hidden shadow-lg bg-dark text-white position-relative z-1"
+          style="background-color: var(--ct-on-surface) !important"
+        >
+          <div class="col-md-8 position-relative">
+            <img
+              class="hero-img image-diagonal-mask"
+              src="https://res.cloudinary.com/dc0qqgkmp/image/upload/v1774442754/framework-css/maxresdefault_qi6ord.png"
+              alt="Hero"
+            />
+            <div
+              class="position-absolute top-0 bottom-0 start-0 end-0 bg-gradient-t pointer-events-none"
+            ></div>
+          </div>
+          <div class="col-md-4 p-5 d-flex flex-column justify-content-center">
+            <div class="d-flex align-items-center gap-2 mb-4">
+              <span
+                class="badge bg-primary-brand text-dark rounded-0 px-2 py-1 category-badge"
+                >EXCLUSIVO</span
+              >
+              <div
+                class="bg-danger"
+                style="
+                  height: 4px;
+                  width: 40px;
+                  background-color: var(--ct-tertiary) !important;
+                "
+              ></div>
             </div>
+            <h1
+              class="display-3 fw-bolder lh-1 mb-4"
+              style="letter-spacing: -0.05em"
+            >
+              NVIDIA<br /><span class="text-primary-brand">DLSS 5</span>
+            </h1>
+            <p class="text-light fw-light fs-5 mb-5 opacity-75">
+              Avanços revolucionários em fidelidade visual para jogos,
+              impulsionados por IA
+            </p>
+            <button
+              class="btn btn-link text-decoration-none p-0 d-flex align-items-center text-white hover-scale"
+              style="width: fit-content"
+            >
+              <span
+                class="rounded-circle d-flex align-items-center justify-content-center"
+                style="
+                  background-color: var(--ct-secondary);
+                  width: 48px;
+                  height: 48px;
+                "
+              >
+                <span class="material-symbols-outlined">play_arrow</span>
+              </span>
+              <span class="ms-3 fw-bolder text-uppercase category-badge"
+                >LER DOSSIÊ COMPLETO</span
+              >
+            </button>
+          </div>
         </div>
         <div class="slash-decorator"></div>
-    </section>
+      </section>
 
-    <!-- Content Grid -->
-    <div class="row g-5">
+      <!-- Content Grid -->
+      <div class="row g-5">
         <!-- News Feed -->
         <div class="col-lg-8">
-            <div class="d-flex justify-content-between align-items-end border-bottom border-warning border-3 pb-2 mb-4">
-                <h2 class="h3 fw-bolder fst-italic text-uppercase mb-0" style="font-family: 'Space Grotesk', sans-serif;">Últimas Atualizações</h2>
-                <a href="#" class="text-decoration-none text-success fw-bolder category-badge" style="color: var(--ct-secondary) !important;">VER TODAS AS HISTÓRIAS</a>
+          <div
+            class="d-flex justify-content-between align-items-end border-bottom border-warning border-3 pb-2 mb-4"
+          >
+            <h2
+              class="h3 fw-bolder fst-italic text-uppercase mb-0"
+              style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+            >
+              Últimas Atualizações
+            </h2>
+            <a
+              href="#"
+              class="text-decoration-none text-success fw-bolder category-badge"
+              style="color: var(--ct-secondary) !important"
+              >VER TODAS AS HISTÓRIAS</a
+            >
+          </div>
+
+          <div class="row g-4 mb-4">
+            <!-- Card 1 -->
+            <div class="col-md-6">
+              <article
+                class="card ct-card h-100 article-card overflow-hidden shadow-sm"
+              >
+                <div
+                  class="position-relative overflow-hidden"
+                  style="height: 14rem"
+                >
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7sufnCYoZEVxbWTjPM5tzN7bLYQHVWNkeOmvGeJ3PU3VN25Go9zVbubLPWpetfk_9U9ZN5w_5IY0lhg_hQOyzgj-vb_9WbLStCn-9KMAneTUIlyyj9fpBwEQg1T7Nl2NR-pUkS3O3KIIfrw__zIrRTG8HeWBRdtcYC-K44t1dtB2xK2YvJ7kjvdkr5nu3gdGT_8W1MK8UlaJRH9e6YiM4Sr-SnsDjulIhqVf7SbJ7H_GRgOfNh6fPhRV1YZD2Twa2w8A-VXg7nK7g"
+                    class="article-img"
+                    alt="Post"
+                  />
+                  <span
+                    class="position-absolute top-0 start-0 m-3 badge rounded-pill category-badge"
+                    style="background-color: var(--ct-secondary); color: #fff"
+                    >Filmes</span
+                  >
+                </div>
+                <div class="card-body p-4 d-flex flex-column">
+                  <div
+                    class="d-flex justify-content-between text-muted mb-3"
+                    style="
+                      font-size: 10px;
+                      font-weight: bold;
+                      text-transform: uppercase;
+                    "
+                  >
+                    <span>2 hours ago</span>
+                    <div class="text-primary-brand">
+                      <span class="material-symbols-outlined fs-6">star</span>
+                      <span class="material-symbols-outlined fs-6">star</span>
+                      <span class="material-symbols-outlined fs-6">star</span>
+                      <span class="material-symbols-outlined fs-6">star</span>
+                      <span class="material-symbols-outlined fs-6"
+                        >star_half</span
+                      >
+                    </div>
+                  </div>
+                  <h3 class="h5 fw-bold mb-2">
+                    Corte do Diretor: Por que filmes de 4 horas são o novo
+                    padrão
+                  </h3>
+                  <p class="card-text text-muted small flex-grow-1">
+                    Explorando a ascensão das narrativas épicas na era do
+                    streaming e por que o público finalmente está pronto.
+                  </p>
+                </div>
+              </article>
             </div>
 
-            <div class="row g-4 mb-4">
-                <!-- Card 1 -->
-                <div class="col-md-6">
-                    <article class="card ct-card h-100 article-card overflow-hidden shadow-sm">
-                        <div class="position-relative overflow-hidden" style="height: 14rem;">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7sufnCYoZEVxbWTjPM5tzN7bLYQHVWNkeOmvGeJ3PU3VN25Go9zVbubLPWpetfk_9U9ZN5w_5IY0lhg_hQOyzgj-vb_9WbLStCn-9KMAneTUIlyyj9fpBwEQg1T7Nl2NR-pUkS3O3KIIfrw__zIrRTG8HeWBRdtcYC-K44t1dtB2xK2YvJ7kjvdkr5nu3gdGT_8W1MK8UlaJRH9e6YiM4Sr-SnsDjulIhqVf7SbJ7H_GRgOfNh6fPhRV1YZD2Twa2w8A-VXg7nK7g" class="article-img" alt="Post">
-                            <span class="position-absolute top-0 start-0 m-3 badge rounded-pill category-badge" style="background-color: var(--ct-secondary); color: #fff;">Filmes</span>
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                            <div class="d-flex justify-content-between text-muted mb-3" style="font-size: 10px; font-weight: bold; text-transform: uppercase;">
-                                <span>2 hours ago</span>
-                                <div class="text-primary-brand">
-                                    <span class="material-symbols-outlined fs-6">star</span>
-                                    <span class="material-symbols-outlined fs-6">star</span>
-                                    <span class="material-symbols-outlined fs-6">star</span>
-                                    <span class="material-symbols-outlined fs-6">star</span>
-                                    <span class="material-symbols-outlined fs-6">star_half</span>
-                                </div>
-                            </div>
-                            <h3 class="h5 fw-bold mb-2">Corte do Diretor: Por que filmes de 4 horas são o novo padrão</h3>
-                            <p class="card-text text-muted small flex-grow-1">Explorando a ascensão das narrativas épicas na era do streaming e por que o público finalmente está pronto.</p>
-                        </div>
-                    </article>
+            <!-- Card 2 -->
+            <div class="col-md-6">
+              <article
+                class="card ct-card h-100 article-card overflow-hidden shadow-sm"
+              >
+                <div
+                  class="position-relative overflow-hidden"
+                  style="height: 14rem"
+                >
+                  <img
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv4ChwMGcGayrpxG93XuktDI1bkzPTVp1da_DN1XWIq7APYhVyiuBLX0Efe-VIkDMOPmaEbwNj-Ysq6UWfeTDqhq_sph-9VNuICXUwrFbnDQtubvkyrMZrKF6JPU9itx4kpA4J97jK4ciPRq1dvpNBGCcR7fg0QYg50iupcboZLiQigWwUWP8iUb9ey_VMhyVp8WebRbnYao9R65sqSVoLmMqUCLORG4xf0PVVCo8JpeWM8cZK1HKuOBpLSJ1v9ki8Mywl7vDnyKNd"
+                    class="article-img"
+                    alt="Post"
+                  />
+                  <span
+                    class="position-absolute top-0 start-0 m-3 badge rounded-pill category-badge"
+                    style="background-color: #ff8fa3; color: #670025"
+                    >Games</span
+                  >
                 </div>
-                
-                <!-- Card 2 -->
-                <div class="col-md-6">
-                    <article class="card ct-card h-100 article-card overflow-hidden shadow-sm">
-                        <div class="position-relative overflow-hidden" style="height: 14rem;">
-                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv4ChwMGcGayrpxG93XuktDI1bkzPTVp1da_DN1XWIq7APYhVyiuBLX0Efe-VIkDMOPmaEbwNj-Ysq6UWfeTDqhq_sph-9VNuICXUwrFbnDQtubvkyrMZrKF6JPU9itx4kpA4J97jK4ciPRq1dvpNBGCcR7fg0QYg50iupcboZLiQigWwUWP8iUb9ey_VMhyVp8WebRbnYao9R65sqSVoLmMqUCLORG4xf0PVVCo8JpeWM8cZK1HKuOBpLSJ1v9ki8Mywl7vDnyKNd" class="article-img" alt="Post">
-                            <span class="position-absolute top-0 start-0 m-3 badge rounded-pill category-badge" style="background-color: #ff8fa3; color: #670025;">Games</span>
-                        </div>
-                        <div class="card-body p-4 d-flex flex-column">
-                            <div class="d-flex justify-content-between text-muted mb-3" style="font-size: 10px; font-weight: bold; text-transform: uppercase;">
-                                <span>5 hours ago</span>
-                                <div class="text-primary-brand">
-                                    <span class="material-symbols-outlined fs-6">star</span><span class="material-symbols-outlined fs-6">star</span><span class="material-symbols-outlined fs-6">star</span><span class="material-symbols-outlined fs-6">star</span><span class="material-symbols-outlined fs-6">star</span>
-                                </div>
-                            </div>
-                            <h3 class="h5 fw-bold mb-2">Haptics de Próxima Geração: Sentindo o Mundo Virtual</h3>
-                            <p class="card-text text-muted small flex-grow-1">Como a nova tecnologia de controles está diminuindo a distância entre a interação digital e a sensação física.</p>
-                        </div>
-                    </article>
+                <div class="card-body p-4 d-flex flex-column">
+                  <div
+                    class="d-flex justify-content-between text-muted mb-3"
+                    style="
+                      font-size: 10px;
+                      font-weight: bold;
+                      text-transform: uppercase;
+                    "
+                  >
+                    <span>5 hours ago</span>
+                    <div class="text-primary-brand">
+                      <span class="material-symbols-outlined fs-6">star</span
+                      ><span class="material-symbols-outlined fs-6">star</span
+                      ><span class="material-symbols-outlined fs-6">star</span
+                      ><span class="material-symbols-outlined fs-6">star</span
+                      ><span class="material-symbols-outlined fs-6">star</span>
+                    </div>
+                  </div>
+                  <h3 class="h5 fw-bold mb-2">
+                    Haptics de Próxima Geração: Sentindo o Mundo Virtual
+                  </h3>
+                  <p class="card-text text-muted small flex-grow-1">
+                    Como a nova tecnologia de controles está diminuindo a
+                    distância entre a interação digital e a sensação física.
+                  </p>
                 </div>
-
-                <!-- Card 3 Large -->
-                <div class="col-12">
-                    <article class="card ct-card overflow-hidden shadow-sm text-white position-relative article-card" style="height: 24rem;">
-                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPXr8yJuMCwm9sljZI1mTBzwO0gLHVAu0RnCkYzWVmVi0RG6eJAgJsoWkq6Xcj8dKgB8cwS5sOwqdVlbwzFLaIvOaaWJPsXsDFX4ragKa-FnZI03mvTJbSrqaDRsju1M9uSs85pXjnaeBfA0o_T_Rx4ilOGgpAFO0LgvwpIznVbdIDPJ2sfycZsJ8bCqiRABpUeiyRbOFq8hiuwmIqp4dDX2C38-GJ1ZZY8Khamb1wbT3hsyMynXU8Orf5MGTlBCIfYpthGnKnCSn" class="article-img position-absolute w-100 h-100" style="object-fit: cover;" alt="Post">
-                        <div class="position-absolute inset-0 w-100 h-100 bg-gradient-hero pointer-events-none"></div>
-                        <div class="card-img-overlay d-flex flex-column justify-content-end p-5 position-relative z-1">
-                            <span class="badge bg-primary-brand text-dark rounded-pill mb-3 category-badge" style="width: fit-content;">Tech Spotlight</span>
-                            <h3 class="h2 fw-bolder mb-2" style="font-family: 'Space Grotesk', sans-serif;">Processamento Quântico: O fim das telas de carregamento?</h3>
-                            <p class="mb-0 text-light w-75">Mergulho profundo na arquitetura de silício que deve revolucionar a forma como experimentamos ambientes de mundo aberto.</p>
-                        </div>
-                    </article>
-                </div>
+              </article>
             </div>
+
+            <!-- Card 3 Large -->
+            <div class="col-12">
+              <article
+                class="card ct-card overflow-hidden shadow-sm text-white position-relative article-card"
+                style="height: 24rem"
+              >
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZPXr8yJuMCwm9sljZI1mTBzwO0gLHVAu0RnCkYzWVmVi0RG6eJAgJsoWkq6Xcj8dKgB8cwS5sOwqdVlbwzFLaIvOaaWJPsXsDFX4ragKa-FnZI03mvTJbSrqaDRsju1M9uSs85pXjnaeBfA0o_T_Rx4ilOGgpAFO0LgvwpIznVbdIDPJ2sfycZsJ8bCqiRABpUeiyRbOFq8hiuwmIqp4dDX2C38-GJ1ZZY8Khamb1wbT3hsyMynXU8Orf5MGTlBCIfYpthGnKnCSn"
+                  class="article-img position-absolute w-100 h-100"
+                  style="object-fit: cover"
+                  alt="Post"
+                />
+                <div
+                  class="position-absolute inset-0 w-100 h-100 bg-gradient-hero pointer-events-none"
+                ></div>
+                <div
+                  class="card-img-overlay d-flex flex-column justify-content-end p-5 position-relative z-1"
+                >
+                  <span
+                    class="badge bg-primary-brand text-dark rounded-pill mb-3 category-badge"
+                    style="width: fit-content"
+                    >Tech Spotlight</span
+                  >
+                  <h3
+                    class="h2 fw-bolder mb-2"
+                    style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+                  >
+                    Processamento Quântico: O fim das telas de carregamento?
+                  </h3>
+                  <p class="mb-0 text-light w-75">
+                    Mergulho profundo na arquitetura de silício que deve
+                    revolucionar a forma como experimentamos ambientes de mundo
+                    aberto.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            
-            <!-- Search -->
-            <div class="ct-card-low p-4 mb-4">
-                <h4 class="h5 fw-bolder fst-italic text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif;">Busca</h4>
-                <div class="input-group">
-                    <input type="text" class="form-control py-3 px-4 border-0 shadow-sm" placeholder="Palavras-chave..." style="border-radius: 1rem 0 0 1rem;">
-                    <button class="btn btn-primary px-3 shadow-sm" style="border-radius: 0 1rem 1rem 0; border-top-left-radius: 0; border-bottom-left-radius: 0;">
-                        <span class="material-symbols-outlined mt-1">search</span>
-                    </button>
-                </div>
+          <!-- Search -->
+          <div class="ct-card-low p-4 mb-4">
+            <h4
+              class="h5 fw-bolder fst-italic text-uppercase mb-3"
+              style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+            >
+              Busca
+            </h4>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control py-3 px-4 border-0 shadow-sm"
+                placeholder="Palavras-chave..."
+                style="border-radius: 1rem 0 0 1rem"
+              />
+              <button
+                class="btn btn-primary px-3 shadow-sm"
+                style="
+                  border-radius: 0 1rem 1rem 0;
+                  border-top-left-radius: 0;
+                  border-bottom-left-radius: 0;
+                "
+              >
+                <span class="material-symbols-outlined mt-1">search</span>
+              </button>
             </div>
+          </div>
 
-            <!-- Categories -->
-            <div class="mb-5">
-                <h4 class="h5 fw-bolder fst-italic text-uppercase mb-3 px-2" style="font-family: 'Space Grotesk', sans-serif;">Tópicos</h4>
-                <div class="d-flex flex-wrap gap-2">
-                    <a href="#" class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm" style="font-size: 0.85rem;"><span class="rounded-circle d-inline-block me-2" style="width: 8px; height: 8px; background-color: var(--ct-secondary);"></span>Animação</a>
-                    <a href="#" class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm" style="font-size: 0.85rem;"><span class="rounded-circle d-inline-block me-2" style="width: 8px; height: 8px; background-color: var(--ct-primary);"></span>Retrogaming</a>
-                    <a href="#" class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm" style="font-size: 0.85rem;"><span class="rounded-circle d-inline-block me-2" style="width: 8px; height: 8px; background-color: var(--ct-tertiary);"></span>Terror</a>
-                    <a href="#" class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm" style="font-size: 0.85rem;"><span class="rounded-circle d-inline-block me-2" style="width: 8px; height: 8px; background-color: #0dcaf0;"></span>Ficção Científica</a>
-                    <a href="#" class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm" style="font-size: 0.85rem;"><span class="rounded-circle d-inline-block me-2" style="width: 8px; height: 8px; background-color: #6f42c1;"></span>Anime</a>
-                </div>
+          <!-- Categories -->
+          <div class="mb-5">
+            <h4
+              class="h5 fw-bolder fst-italic text-uppercase mb-3 px-2"
+              style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+            >
+              Tópicos
+            </h4>
+            <div class="d-flex flex-wrap gap-2">
+              <a
+                href="#"
+                class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm"
+                style="font-size: 0.85rem"
+                ><span
+                  class="rounded-circle d-inline-block me-2"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    background-color: var(--ct-secondary);
+                  "
+                ></span
+                >Animação</a
+              >
+              <a
+                href="#"
+                class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm"
+                style="font-size: 0.85rem"
+                ><span
+                  class="rounded-circle d-inline-block me-2"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    background-color: var(--ct-primary);
+                  "
+                ></span
+                >Retrogaming</a
+              >
+              <a
+                href="#"
+                class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm"
+                style="font-size: 0.85rem"
+                ><span
+                  class="rounded-circle d-inline-block me-2"
+                  style="
+                    width: 8px;
+                    height: 8px;
+                    background-color: var(--ct-tertiary);
+                  "
+                ></span
+                >Terror</a
+              >
+              <a
+                href="#"
+                class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm"
+                style="font-size: 0.85rem"
+                ><span
+                  class="rounded-circle d-inline-block me-2"
+                  style="width: 8px; height: 8px; background-color: #0dcaf0"
+                ></span
+                >Ficção Científica</a
+              >
+              <a
+                href="#"
+                class="btn btn-light bg-white border fw-bold text-dark rounded-3 py-2 px-3 d-flex align-items-center shadow-sm"
+                style="font-size: 0.85rem"
+                ><span
+                  class="rounded-circle d-inline-block me-2"
+                  style="width: 8px; height: 8px; background-color: #6f42c1"
+                ></span
+                >Anime</a
+              >
             </div>
+          </div>
 
-            <!-- CTA -->
-            <div class="card bg-primary-brand border-0 rounded-4 p-4 text-center text-lg-start position-relative overflow-hidden">
-                <div class="position-relative z-1 py-3">
-                    <h4 class="display-6 fw-bolder mb-3" style="font-family: 'Space Grotesk', sans-serif;">JUNTE-SE A<br>COMUNIDADE</h4>
-                    <p class="fw-medium mb-4" style="color: rgba(0,0,0,0.6);">Receba análises diárias exclusivas e acesso antecipado a dossiês.</p>
-                    <button class="btn btn-dark w-100 py-3 rounded-3 fw-bold mb-3" style="background-color: var(--ct-on-surface);">Cadastre-se Agora</button>
-                    <a href="#" class="d-block text-dark fw-bolder text-decoration-none category-badge text-center">JÁ É UM CIDADÃO? ENTRE AQUI</a>
-                </div>
-                <div class="position-absolute rounded-circle" style="background: rgba(255,255,255,0.2); width: 150px; height: 150px; bottom: -50px; right: -50px; filter: blur(30px);"></div>
+          <!-- CTA -->
+          <div
+            class="card bg-primary-brand border-0 rounded-4 p-4 text-center text-lg-start position-relative overflow-hidden"
+          >
+            <div class="position-relative z-1 py-3">
+              <h4
+                class="display-6 fw-bolder mb-3"
+                style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+              >
+                JUNTE-SE A<br />COMUNIDADE
+              </h4>
+              <p class="fw-medium mb-4" style="color: rgba(0, 0, 0, 0.6)">
+                Receba análises diárias exclusivas e acesso antecipado a
+                dossiês.
+              </p>
+              <button
+                class="btn btn-dark w-100 py-3 rounded-3 fw-bold mb-3"
+                style="background-color: var(--ct-on-surface)"
+              >
+                Cadastre-se Agora
+              </button>
+              <a
+                href="#"
+                class="d-block text-dark fw-bolder text-decoration-none category-badge text-center"
+                >JÁ É UM CIDADÃO? ENTRE AQUI</a
+              >
             </div>
-
+            <div
+              class="position-absolute rounded-circle"
+              style="
+                background: rgba(255, 255, 255, 0.2);
+                width: 150px;
+                height: 150px;
+                bottom: -50px;
+                right: -50px;
+                filter: blur(30px);
+              "
+            ></div>
+          </div>
         </div>
+      </div>
+    </main>
+
+    <!-- News Ticker -->
+    <div
+      class="ticker ct-glass border rounded-pill px-4 py-2 d-flex align-items-center gap-3 shadow"
+      style="max-width: 90vw"
+    >
+      <span
+        class="d-flex align-items-center gap-2 category-badge text-tertiary fw-bolder flex-shrink-0"
+      >
+        <span
+          class="rounded-circle"
+          style="width: 8px; height: 8px; background-color: var(--ct-tertiary)"
+        ></span>
+        BREAKING
+      </span>
+      <div style="width: 1px; height: 1rem; background-color: #ccc"></div>
+      <p
+        class="mb-0 fw-bold small text-truncate"
+        style="max-width: 400px; color: var(--ct-on-surface)"
+      >
+        Marvel's 'Midnight Suns' sequel rumored for 2026 reveal • New Studio
+        Ghibli project leaked • Star Wars Outlaws updates detailed...
+      </p>
+      <span
+        class="material-symbols-outlined text-muted fs-6"
+        style="cursor: pointer"
+        >close</span
+      >
     </div>
-</main>
 
-<!-- News Ticker -->
-<div class="ticker ct-glass border rounded-pill px-4 py-2 d-flex align-items-center gap-3 shadow" style="max-width: 90vw;">
-    <span class="d-flex align-items-center gap-2 category-badge text-tertiary fw-bolder flex-shrink-0">
-        <span class="rounded-circle" style="width: 8px; height: 8px; background-color: var(--ct-tertiary);"></span> BREAKING
-    </span>
-    <div style="width: 1px; height: 1rem; background-color: #ccc;"></div>
-    <p class="mb-0 fw-bold small text-truncate" style="max-width: 400px; color: var(--ct-on-surface);">
-        Marvel's 'Midnight Suns' sequel rumored for 2026 reveal • New Studio Ghibli project leaked • Star Wars Outlaws updates detailed...
-    </p>
-    <span class="material-symbols-outlined text-muted fs-6" style="cursor: pointer;">close</span>
-</div>
-
-<!-- Footer -->
-<footer class="bg-light border-top py-5 mt-5">
-    <div class="container-fluid max-w-7xl px-4 px-lg-5">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4">
-            <div class="text-center text-md-start">
-                <div class="h4 fw-bolder fst-italic text-uppercase mb-2" style="font-family: 'Space Grotesk', sans-serif;">ContraTerra</div>
-                <p class="text-muted small mb-0">© 2026 ContraTerra. The Neon Editorial.</p>
+    <!-- Footer -->
+    <footer class="bg-light border-top py-5 mt-5">
+      <div class="container-fluid max-w-7xl px-4 px-lg-5">
+        <div
+          class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-4"
+        >
+          <div class="text-center text-md-start">
+            <div
+              class="h4 fw-bolder fst-italic text-uppercase mb-2"
+              style="font-family: &quot;Space Grotesk&quot;, sans-serif"
+            >
+              ContraTerra
             </div>
-            
-            <ul class="list-inline mb-0 text-center">
-                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block">Sobre Nós</a></li>
-                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block">Política Editorial</a></li>
-                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block">Anunciar</a></li>
-                <li class="list-inline-item me-4"><a href="#" class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block">Privacidade</a></li>
-                <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block">Contato</a></li>
-            </ul>
-        </div>
-    </div>
-</footer>
+            <p class="text-muted small mb-0">
+              © 2026 ContraTerra. The Neon Editorial.
+            </p>
+          </div>
 
-<!-- Bootstrap JS Bundle -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+          <ul class="list-inline mb-0 text-center">
+            <li class="list-inline-item me-4">
+              <a
+                href="#"
+                class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block"
+                >Sobre Nós</a
+              >
+            </li>
+            <li class="list-inline-item me-4">
+              <a
+                href="#"
+                class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block"
+                >Política Editorial</a
+              >
+            </li>
+            <li class="list-inline-item me-4">
+              <a
+                href="#"
+                class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block"
+                >Anunciar</a
+              >
+            </li>
+            <li class="list-inline-item me-4">
+              <a
+                href="#"
+                class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block"
+                >Privacidade</a
+              >
+            </li>
+            <li class="list-inline-item">
+              <a
+                href="#"
+                class="text-muted text-decoration-none fw-medium small hover-scale d-inline-block"
+                >Contato</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
