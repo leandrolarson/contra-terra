@@ -1,0 +1,34 @@
+@use "variables";
+
+// Reset básico e estilos do corpo
+body {
+  font-family: variables.$fonte-principal;
+  background-color: variables.$ct-surface;
+  color: variables.$ct-on-surface;
+  margin: 0;
+  padding: 0;
+}
+
+// Tipografia Global
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.display-1,
+.display-2,
+.display-3,
+.display-4,
+.display-5,
+.display-6 {
+  font-family: variables.$fonte-destaque;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+// Estilo para links (opcional, mas recomendado no base)
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}

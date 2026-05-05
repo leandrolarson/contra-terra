@@ -1,0 +1,25 @@
+// Arquivo: assets/scss/_mixins.scss
+
+// 1. Mixin exigido pela atividade: Centralização perfeita
+@mixin centralizar-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// 2. Mixin para o efeito "Glass" (Vidro fosco)
+// Perceba que colocamos valores padrão, mas você pode mudar quando for chamar!
+@mixin glass-effect($cor-fundo: rgba(255, 255, 255, 0.7), $desfoque: 12px) {
+  background: $cor-fundo;
+  backdrop-filter: blur($desfoque);
+  -webkit-backdrop-filter: blur($desfoque); // Para funcionar no Safari
+}
+
+// 3. Mixin para sobreposições (Gradients e fundos que cobrem tudo)
+@mixin absoluto-total {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,85 @@
+// Arquivo: assets/scss/_layout.scss
+@use "variables";
+@use "mixins";
+
+// ==== HEADER & NAVBAR ====
+.navbar {
+  @include mixins.glass-effect(
+    rgba(246, 246, 246, 0.7)
+  ); // Uso do mixin de vidro
+
+  .navbar-brand {
+    font-family: variables.$fonte-destaque;
+    letter-spacing: -0.05em;
+  }
+
+  .nav-link {
+    transition: color 0.3s;
+    &:hover {
+      color: variables.$ct-tertiary;
+    }
+  }
+}
+
+// ==== HERO SECTION (Exemplo de Aninhamento Profundo) ====
+.hero-article {
+  height: 70vh;
+  min-height: 500px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+
+  .hero-gradient {
+    @include mixins.absoluto-total; // Uso do mixin de cobertura total
+    background: linear-gradient(
+      to top,
+      variables.$ct-on-surface 0%,
+      rgba(45, 47, 47, 0.4) 60%,
+      transparent 100%
+    );
+  }
+
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+}
+
+// ==== CARDS & COMPONENTES ====
+.ct-card {
+  background-color: variables.$ct-surface-lowest;
+  border: none !important;
+  border-radius: 1rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  .card-title {
+    color: variables.$ct-on-surface;
+    font-weight: bold;
+  }
+
+  .card-text {
+    color: variables.$ct-on-surface-variant;
+    font-size: 0.9rem;
+  }
+}
+
+// ==== FOOTER ====
+footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+
+  .list-inline-item {
+    a {
+      color: variables.$ct-on-surface-variant;
+      &:hover {
+        color: variables.$ct-tertiary;
+      }
+    }
+  }
+}
