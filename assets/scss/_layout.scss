@@ -1,563 +1,78 @@
-// Arquivo: assets/scss/_layout.scss
 @use "variables";
 @use "mixins";
 
-// ==== HEADER & NAVBAR ====
-.navbar {
-  @include mixins.glass-effect(
-    rgba(246, 246, 246, 0.7)
-  ); // Uso do mixin de vidro
-
-  .navbar-brand {
-    font-family: variables.$fonte-destaque;
-    letter-spacing: -0.05em;
-  }
-
-  .nav-link {
-    transition: color 0.3s;
-    &:hover {
-      color: variables.$ct-tertiary;
-    }
-  }
+/* Glassmorphism utility */
+.ct-glass {
+  @include mixins.glass-effect;
 }
 
-// ==== HERO SECTION (Exemplo de Aninhamento Profundo) ====
-.hero-article {
-  height: 70vh;
-  min-height: 500px;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-
-  .hero-gradient {
-    @include mixins.absoluto-total; // Uso do mixin de cobertura total
-    background: linear-gradient(
-      to top,
-      variables.$ct-on-surface 0%,
-      rgba(45, 47, 47, 0.4) 60%,
-      transparent 100%
-    );
-  }
-
-  .container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-}
-
-// ==== CARDS & COMPONENTES ====
+/* Tonal Layering */
 .ct-card {
   background-color: variables.$ct-surface-lowest;
   border: none !important;
   border-radius: 1rem;
-  transition: transform 0.3s ease;
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-
-  .card-title {
-    color: variables.$ct-on-surface;
-    font-weight: bold;
-  }
-
-  .card-text {
-    color: variables.$ct-on-surface-variant;
-    font-size: 0.9rem;
+  // Aninhamento com o seletor pai (&) para gerar .ct-card-low
+  &-low {
+    background-color: variables.$ct-surface-low;
+    border: none !important;
+    border-radius: 1rem;
   }
 }
 
-// ==== FOOTER ====
-footer {
-  background-color: #f8f9fa;
-  border-top: 1px solid #dee2e6;
+/* Buttons */
+.btn {
+  &-primary {
+    @include mixins.btn-base;
+    background-color: variables.$ct-secondary;
+    color: #fff;
+    border: none;
 
-  .list-inline-item {
-    a {
-      color: variables.$ct-on-surface-variant;
-      &:hover {
-        color: variables.$ct-tertiary;
-      }
+    // Aninhamento de pseudo-classes
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: variables.$ct-tertiary !important;
+      color: #fff !important;
+      box-shadow: 0 4px 15px rgba(255, 45, 111, 0.4);
     }
   }
-}
 
-// ==== HERO SECTION DA PÁGINA INICIAL ====
-.hero-container {
-  // A imagem cresce quando passamos o rato por cima do container
-  &:hover .hero-img {
-    transform: scale(1.05);
-  }
-
-  .hero-img {
-    height: 600px;
-    object-fit: cover;
-    width: 100%;
-    opacity: 0.8;
-    transition: transform 0.7s;
-  }
-
-  .image-diagonal-mask {
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-  }
-
-  .bg-gradient-t {
-    @include mixins.absoluto-total;
-    background: linear-gradient(to top, variables.$ct-on-surface 0%, transparent 100%);
-  }
-
-  // Estilo específico do slash da página inicial
-  .slash-decorator {
-    bottom: -1.5rem;
-    left: -1.5rem;
-    width: 8rem;
-    height: 8rem;
-    background-color: rgba(variables.$ct-tertiary, 0.2); // Usando variável com opacidade
-  }
-}
-
-// Utilitário extra de gradiente (usado num card maior)
-.bg-gradient-hero {
-  background: linear-gradient(to top, #000 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-}
-
-// ==== CARDS DE ARTIGOS ====
-.article-card {
-  &:hover .article-img {
-    transform: scale(1.1);
-  }
-
-  .article-img {
-    height: 14rem;
-    object-fit: cover;
-    width: 100%;
-    transition: transform 0.5s;
-  }
-}
-
-// ==== NEWS TICKER ====
-.ticker {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1050;
-  white-space: nowrap;
-}
-
-// ==== HERO DA NOTÍCIA ====
-.hero-article {
-  height: 70vh;
-  min-height: 500px;
-  position: relative;
-  
-  /* A imagem de fundo (que no seu código estava no CSS) 
-     idealmente deveria ir para o HTML num style inline se for dinâmica,
-     mas mantivemo-la aqui para replicar o seu código exato. */
-  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCArGqjytvOKkI9qJS1EEn1oE4SuADFmTeP5AxclVyAWwF33cBhSpr2n18jqR_F3b5Gz2Wpl_2UzOHps5Bl3-Vkglv3medLljW6OpE88HJmvKxMLLRWLcIw-5Bdn05XKNvRENsGpO7VYEKh1vgQD7kyEuLAEqlNpxb9zIvLWfoxkvgrHjP1hlS-lOX2YXduloFcKlld0oev-MQ4YkU74-81Fy_cQMCgN7xl93-g2CBsT596LMcDfwGhCnJASRcULaPfBxH6hAcS8szK");
-  background-size: cover;
-  background-position: center;
-
-  .hero-gradient {
-    @include mixins.absoluto-total; // O nosso mixin em ação!
-    background: linear-gradient(
-      to top,
-      variables.$ct-on-surface 0%,
-      rgba(45, 47, 47, 0.4) 60%,
-      transparent 100%
-    );
-  }
-
-  .category-nav a {
-    color: variables.$ct-primary;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 0.875rem;
-    letter-spacing: 0.1em;
-    transition: color 0.3s;
+  &-outline-primary {
+    @include mixins.btn-base;
+    color: variables.$ct-secondary;
+    border: 2px solid variables.$ct-secondary;
 
     &:hover {
+      background-color: variables.$ct-secondary;
       color: #fff;
     }
   }
 }
 
-// ==== TIPOGRAFIA E CITAÇÕES ====
-.first-letter-drop::first-letter {
-  font-size: 4.5rem;
-  font-weight: 900;
-  color: variables.$ct-primary;
-  float: left;
-  margin-right: 1rem;
-  line-height: 1;
-  font-family: variables.$fonte-destaque;
-}
-
-.article-quote {
+/* Inputs */
+.form-control {
   background-color: variables.$ct-surface-low;
-  border-left: 8px solid variables.$ct-primary;
-  padding: 2rem;
-  border-radius: 1rem;
-  position: relative;
-  margin: 3rem 0;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
 
-  &::before {
-    content: "format_quote";
-    font-family: "Material Symbols Outlined";
-    position: absolute;
-    top: -1.5rem;
-    left: -1rem;
-    font-size: 8rem;
-    color: variables.$ct-primary;
-    opacity: 0.2;
-    pointer-events: none;
-  }
-}
-
-// ==== UTILITÁRIOS DA NOTÍCIA ====
-.editorial-shadow {
-  box-shadow: 0 40px 60px -15px rgba(0, 0, 0, 0.06);
-}
-
-.comment-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 0.75rem;
-  object-fit: cover;
-}
-
-// ==== SIDEBAR (Tags e Relacionados) ====
-.tag-pill {
-  background-color: variables.$ct-surface;
-  border: 1px solid variables.$ct-surface-low;
-  color: variables.$ct-on-surface;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 50rem;
-  transition: all 0.3s;
-
-  &:hover {
-    background-color: variables.$ct-tertiary;
-    color: #fff;
-    border-color: variables.$ct-tertiary;
-  }
-}
-
-.related-card {
-  display: flex;
-  gap: 1rem;
-  text-decoration: none;
-  color: inherit;
-
-  .related-card-img-wrapper {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    position: relative;
-  }
-
-  .related-card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s;
-  }
-
-  // Aninhamento elegante para estados de hover nos filhos
-  &:hover {
-    .related-card-img {
-      transform: scale(1.1);
-    }
-    .related-title {
-      color: variables.$ct-tertiary;
-    }
-  }
-}
-
-.cta-sidebar {
-  background-color: variables.$ct-on-surface;
-  color: white;
-  padding: 2rem;
-  border-radius: 1rem;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-
-  .cta-sidebar-bg {
-    @include mixins.absoluto-total; // Mixin de cobertura total
-    object-fit: cover;
-    opacity: 0.2;
-    transition: opacity 0.3s;
-  }
-
-  &:hover .cta-sidebar-bg {
-    opacity: 0.3;
-  }
-}
-
-// ==== BOTÃO SCROLL TO TOP ====
-.btn-scroll-top {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  background-color: variables.$ct-primary;
-  color: variables.$ct-on-surface; // Atualizado para usar a nossa variável global de cor escura
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  z-index: 1040;
-  transition: transform 0.3s;
-
-  &:hover {
-    transform: scale(1.1);
-    color: variables.$ct-on-surface;
-  }
-}
-
-// ==== LOGIN E CADASTRO ====
-.login-container {
-  max-width: 1140px;
-  box-shadow: 0 40px 60px -15px rgba(0, 0, 0, 0.06);
-}
-
-// Modificadores geométricos (Slashes)
-.slash-1 {
-  top: -10%;
-  left: -5%;
-  width: 40%;
-  height: 60%;
-  background-color: rgba(variables.$ct-primary, 0.2); // Usando a variável!
-  transform: rotate(12deg);
-}
-
-.slash-2 {
-  bottom: -10%;
-  right: -5%;
-  width: 30%;
-  height: 50%;
-  background-color: rgba(88, 242, 164, 0.1); 
-  transform: rotate(-12deg);
-}
-
-// Painel Lateral (Imagem e Fundo Escuro)
-.bg-editorial {
-  background-color: variables.$ct-on-surface;
-  position: relative;
-  overflow: hidden;
-  color: white;
-
-  .bg-editorial-img {
-    @include mixins.absoluto-total; // O nosso atalho mixin!
-    object-fit: cover;
-    opacity: 0.4;
-  }
-
-  .bg-editorial-gradient {
-    @include mixins.absoluto-total;
-    background: linear-gradient(
-      to top,
-      variables.$ct-on-surface 0%,
-      rgba(45, 47, 47, 0.4) 50%,
-      transparent 100%
-    );
-  }
-}
-
-// ==== COMPONENTES DE FORMULÁRIO ====
-.form-control-icon {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: variables.$ct-on-surface-variant;
-}
-
-// Divisor "OU ACESSO SEGURO VIA"
-.divider-text {
-  position: relative;
-  text-align: center;
-  margin: 2rem 0;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    border-top: 1px solid variables.$ct-surface-low;
-    z-index: 1;
-  }
-
-  span {
-    background-color: variables.$ct-surface-lowest;
-    padding: 0 1rem;
-    position: relative;
-    z-index: 2;
-    color: variables.$ct-on-surface-variant;
-    font-size: 0.75rem;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-  }
-}
-
-// Botões Sociais
-.btn-social {
-  background-color: variables.$ct-surface;
-  border: 1px solid variables.$ct-surface-low;
-  color: variables.$ct-on-surface;
-  font-weight: bold;
-  transition: background-color 0.2s;
-
-  &:hover {
+  &:focus {
     background-color: variables.$ct-surface-low;
-  }
-}
-
-// ==== RODAPÉ FLUTUANTE (Ticker Bottom) ====
-.ticker-bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40px;
-  z-index: 1050;
-  @include mixins.glass-effect(rgba(255, 255, 255, 0.7)); // Usando o efeito de vidro do mixin!
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-}
-
-// ==== LOGIN SOCIAL ====
-
-// Efeitos de Fundo (Blur e Slashes)
-.slash-decorator-bg {
-  position: absolute;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(40px);
-  
-  &.bg-blur-1 {
-    top: 5rem;
-    right: -5rem;
-    width: 24rem;
-    height: 24rem;
-    background-color: rgba(variables.$ct-primary, 0.2); // Variável
-  }
-  
-  &.bg-blur-2 {
-    bottom: -5rem;
-    left: -5rem;
-    width: 31rem;
-    height: 31rem;
-    background-color: rgba(88, 242, 164, 0.1);
-  }
-}
-
-.slash-tertiary {
-  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-  background-color: variables.$ct-tertiary; // Variável
-  width: 6rem;
-  height: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-// Grupo de Avatares (Excelente uso de Nesting)
-.avatar-group {
-  display: flex;
-  
-  .avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border: 4px solid variables.$ct-surface;
-    background-color: variables.$ct-surface-low;
-    margin-left: -1rem;
-    overflow: hidden;
-    
-    &:first-child {
-      margin-left: 0;
-    }
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-}
-
-// Painel Principal
-.glass-panel {
-  @include mixins.glass-effect(rgba(255, 255, 255, 0.7)); // O nosso mixin!
-  box-shadow: 0 40px 60px -15px rgba(45, 47, 47, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-// Botões Sociais Específicos (Complemento à classe base)
-.btn-social {
-  &.btn-google {
-    background-color: #fff;
-    border: 1px solid variables.$ct-surface-low;
-    color: variables.$ct-on-surface;
-    
-    &:hover {
-      border-color: variables.$ct-primary;
-    }
-  }
-  
-  &.btn-discord {
-    background-color: #5865f2;
-    color: #fff;
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 0 0 2px variables.$ct-secondary;
     border: none;
-    
-    &:hover {
-      background-color: variables.$ct-tertiary;
-    }
-    
-    &::before {
-      content: "";
-      @include mixins.absoluto-total; // O nosso mixin!
-      background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlP10Y_DIJpY_9VliRfZbS6EPk7-7oV8vw_p80cYX0T7QB6xdQ7CnmQuCZrFGg_z9nu7_y4iUaqGsDmwurMcSWWaafAgkLDEIxFVHdaAqaZrq5VAi9p5Ix_juV4yvmefT71BW9PUEJrLvm61hoZ4uDHh-rruayY-Vtr7oxDGijUhz5EGsPlbxGUfnBuulu-fU1ATGsMiYQyBp-wfsPIR-mDMY6NV2ghHq21sBhYS-VuwekHKKS1wA7nhnBwWcPXgqG495D7q1Jcptc");
-      background-size: cover;
-      opacity: 0.2;
-      transition: opacity 0.3s;
-    }
-    
-    &:hover::before {
-      opacity: 0.4;
-    }
   }
 }
 
-// Letreiro Animado (Marquee)
-.marquee-container {
-  overflow: hidden;
-  white-space: nowrap;
-  flex-grow: 1;
-  margin-left: 2rem;
-  
-  .animate-marquee {
-    display: inline-block;
-    animation: marquee 30s linear infinite;
-  }
+/* Custom utils */
+.text-primary-brand {
+  color: variables.$ct-primary !important;
 }
 
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+.bg-primary-brand {
+  background-color: variables.$ct-primary !important;
+}
+
+.text-tertiary {
+  color: variables.$ct-tertiary !important;
 }

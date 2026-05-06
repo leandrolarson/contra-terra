@@ -1,16 +1,30 @@
 @use "variables";
-@use 'mixins';
 
-// Reset básico e estilos do corpo
-body {
-  font-family: variables.$fonte-principal;
-  background-color: variables.$ct-surface;
-  color: variables.$ct-on-surface;
-  margin: 0;
-  padding: 0;
+:root {
+  --ct-primary: #{variables.$ct-primary};
+  --ct-primary-container: #{variables.$ct-primary-container};
+  --ct-secondary: #{variables.$ct-secondary};
+  --ct-tertiary: #{variables.$ct-tertiary};
+  --ct-surface: #{variables.$ct-surface};
+  --ct-surface-low: #{variables.$ct-surface-low};
+  --ct-surface-lowest: #{variables.$ct-surface-lowest};
+  --ct-on-surface: #{variables.$ct-on-surface};
+  --ct-on-surface-variant: #{variables.$ct-on-surface-variant};
+
+  --bs-font-sans-serif: #{variables.$bs-font-sans-serif};
+  --bs-primary: #{variables.$ct-primary};
+  --bs-secondary: #{variables.$ct-secondary};
+  --bs-info: #{variables.$ct-tertiary};
+  --bs-body-bg: #{variables.$ct-surface};
+  --bs-body-color: #{variables.$ct-on-surface};
 }
 
-// Tipografia Global
+body {
+  font-family: variables.$bs-font-sans-serif;
+  background-color: variables.$ct-surface;
+  color: variables.$ct-on-surface;
+}
+
 h1,
 h2,
 h3,
@@ -23,132 +37,7 @@ h6,
 .display-4,
 .display-5,
 .display-6 {
-  font-family: variables.$fonte-destaque;
+  font-family: variables.$bs-font-heading;
   font-weight: 700;
   letter-spacing: -0.02em;
-}
-
-// Estilo para links (opcional, mas recomendado no base)
-a {
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-// Ícones Material Symbols
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-// Utilitários Globais
-.category-badge {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 900;
-}
-
-.hover-scale {
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-.slash-decorator {
-  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
-  position: absolute;
-  z-index: -1;
-  // Os estilos específicos de cada slash ficam no layout
-}
-
-// ==========================================
-// ESTILOS MIGRADOS DO OLD_STYLE.CSS
-// ==========================================
-
-// ==== UTILITÁRIOS GLOBAIS ====
-.ct-glass {
-  @include mixins.glass-effect; // Reutilizando o nosso mixin
-}
-
-.ct-card-low {
-  background-color: variables.$ct-surface-low;
-  border: none !important;
-  border-radius: 1rem; // lg radius
-}
-
-// ==== COMPONENTES BASE (Botões e Inputs) ====
-.btn-primary {
-  background-color: variables.$ct-secondary;
-  color: #fff;
-  border: none;
-  border-radius: 1.5rem; // xl radius
-  font-weight: bold;
-  padding: 0.5rem 1.5rem;
-  transition: all 0.3s ease;
-
-  // Aninhamento para os estados do botão
-  &:hover, &:focus, &:active {
-    background-color: variables.$ct-tertiary !important;
-    color: #fff !important;
-    box-shadow: 0 4px 15px rgba(255, 45, 111, 0.4);
-  }
-}
-
-.btn-outline-primary {
-  color: variables.$ct-secondary;
-  border: 2px solid variables.$ct-secondary;
-  border-radius: 1.5rem;
-  font-weight: bold;
-  padding: 0.5rem 1.5rem;
-
-  &:hover {
-    background-color: variables.$ct-secondary;
-    color: #fff;
-  }
-}
-
-.form-control {
-  background-color: variables.$ct-surface-low;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
-
-  &:focus {
-    background-color: variables.$ct-surface-low;
-    box-shadow: 0 0 0 2px variables.$ct-secondary;
-    border: none;
-  }
-}
-
-// ==== CLASSES DE CORES CUSTOMIZADAS ====
-// Essenciais para as tags que usam essas classes no HTML
-.text-primary-brand {
-  color: variables.$ct-primary !important;
-}
-
-.bg-primary-brand {
-  background-color: variables.$ct-primary !important;
-}
-
-.text-tertiary {
-  color: variables.$ct-tertiary !important;
-}
-
-// ==== UTILITÁRIOS DE SUPERFÍCIE E TEXTO ====
-.bg-on-surface {
-  background-color: variables.$ct-on-surface !important;
-}
-
-.bg-surface-low {
-  background-color: variables.$ct-surface-low !important;
-}
-
-.text-on-surface {
-  color: variables.$ct-on-surface !important;
-}
-
-.text-on-surface-variant {
-  color: variables.$ct-on-surface-variant !important;
 }

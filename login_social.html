@@ -26,9 +26,165 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-    
+    <style>
+      .slash-decorator-bg {
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        filter: blur(40px);
+      }
+      .bg-blur-1 {
+        top: 5rem;
+        right: -5rem;
+        width: 24rem;
+        height: 24rem;
+        background-color: rgba(254, 212, 0, 0.2);
+      }
+      .bg-blur-2 {
+        bottom: -5rem;
+        left: -5rem;
+        width: 31rem;
+        height: 31rem;
+        background-color: rgba(88, 242, 164, 0.1);
+      }
+      .slash-tertiary {
+        clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+        background-color: var(--ct-tertiary);
+        width: 6rem;
+        height: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .avatar-group {
+        display: flex;
+      }
+      .avatar-group .avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        border: 4px solid var(--ct-surface);
+        background-color: var(--ct-surface-low);
+        margin-left: -1rem;
+        overflow: hidden;
+      }
+      .avatar-group .avatar:first-child {
+        margin-left: 0;
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 40px 60px -15px rgba(45, 47, 47, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .btn-social {
+        transition: all 0.3s;
+      }
+      .btn-social:hover {
+        transform: scale(1.02);
+      }
+      .btn-google {
+        background-color: #fff;
+        border: 1px solid var(--ct-surface-low);
+        color: var(--ct-on-surface);
+      }
+      .btn-google:hover {
+        border-color: var(--ct-primary);
+      }
+      .btn-discord {
+        background-color: #5865f2;
+        color: #fff;
+        position: relative;
+        overflow: hidden;
+        border: none;
+      }
+      .btn-discord:hover {
+        background-color: var(--ct-tertiary);
+      }
+      .btn-discord::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAlP10Y_DIJpY_9VliRfZbS6EPk7-7oV8vw_p80cYX0T7QB6xdQ7CnmQuCZrFGg_z9nu7_y4iUaqGsDmwurMcSWWaafAgkLDEIxFVHdaAqaZrq5VAi9p5Ix_juV4yvmefT71BW9PUEJrLvm61hoZ4uDHh-rruayY-Vtr7oxDGijUhz5EGsPlbxGUfnBuulu-fU1ATGsMiYQyBp-wfsPIR-mDMY6NV2ghHq21sBhYS-VuwekHKKS1wA7nhnBwWcPXgqG495D7q1Jcptc");
+        background-size: cover;
+        opacity: 0.2;
+        transition: opacity 0.3s;
+      }
+      .btn-discord:hover::before {
+        opacity: 0.4;
+      }
+
+      .ticker-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1050;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 0.75rem 1.5rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+        flex-grow: 1;
+        margin-left: 2rem;
+      }
+
+      .animate-marquee {
+        display: inline-block;
+        animation: marquee 30s linear infinite;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      .divider-text {
+        position: relative;
+        text-align: center;
+        margin: 1rem 0;
+      }
+      .divider-text::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        border-top: 1px solid var(--ct-surface-low);
+        z-index: 1;
+      }
+      .divider-text span {
+        background-color: transparent;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 2;
+        color: var(--ct-on-surface-variant);
+        font-size: 0.75rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+      }
+    </style>
   </head>
   <body class="bg-surface d-flex flex-column min-vh-100">
     <!-- Navigation -->
